@@ -1,0 +1,10 @@
+.sortWrapper{
+display: flex;
+min-width: 840px;
+justify-content: space-between;
+
+}
+
+/* section .sortWrapper{
+    width: 100%;
+} */

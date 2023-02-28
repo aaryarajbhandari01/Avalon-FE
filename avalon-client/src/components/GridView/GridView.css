@@ -1,0 +1,21 @@
+.gridView{
+    /* padding: 9re */
+     display: flex;
+   /* // justify-content: left; */
+    margin-left: 2%;
+    margin-right:2% ;
+    flex-wrap: wrap;
+
+}
+
+/* .gridViewContainer {
+    max-width: 120rem;
+}
+
+.gridView .grid{
+    gap: 3.2rem;
+}
+
+.grid-three-column{
+    grid-template-columns: repeat(3, 1fr);
+} */

@@ -1,0 +1,107 @@
+/* .pointer{
+    cursor:pointer;
+  }
+  .accordian-link h3{
+    font-size:clamp(18px,2vw,30px);
+  }
+  .user_image{
+    width:50px;
+    height:50px;
+    object-fit:contain;
+    background:#00000030;
+    border-radius:50%;
+    padding:.20rem;
+  }
+  .review_answer{
+    max-height:150px;
+    overflow-y:auto;
+  }
+  /*scrollbar width */
+  .review_answer::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /*scrollbar Track */
+  .review_answer::-webkit-scrollbar-track {
+    background: rgb(189, 190, 189);
+    border-radius: 8px;
+  }
+  
+  .review_answer::-webkit-scrollbar-thumb {
+    background-color: green;
+    outline: 1px solid darkgreen;
+    border-radius: 8px;
+  }
+
+  
+  
+  
+  
+  .reviewform-container{
+    width: 95%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    /* background-color: rgb(231, 236, 235); */
+
+  }
+
+  .reviewform-wrapper{
+padding: 20px;
+
+  }
+
+  .reviewform{
+   
+padding:10px ;
+  }
+
+  .reviewform-top{
+
+  }
+
+  .reviewform-top .title{
+font-size: medium;
+font-weight: 300;
+padding: 5px;
+padding-left: 0;
+text-transform: capitalize;
+padding-bottom: 15px;
+  }
+
+  .reviewform-input input{
+width: 300px;
+padding: 5px;
+margin-top: 5px;
+border-width: 1px ;
+border-radius: 2px;  }
+
+.reviewform-input textarea{
+  width: 500px;
+padding: 5px;
+margin-top: 5px;
+border-width: 1px ;
+border-radius: 2px; 
+}
+  .userinput .input-group{
+padding-top: 20px;
+  }
+
+ .reviewform-input label{
+padding-bottom: 10px;
+font-size:smaller ;
+color: gray;
+  }
+  
+.reviewform-input .add-btn{
+  width: 100px;
+  padding: 5px;
+  margin: 10px;
+  margin-left: 0;
+  background-color: rgb(180, 220, 189);
+  border-radius: 2px;
+  border: none;
+
+}
+
+  

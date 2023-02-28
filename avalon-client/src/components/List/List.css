@@ -1,0 +1,12 @@
+
+.list{
+    /* padding: 9rem 0; */
+padding-top: 2rem;
+width: 95%;
+    display: flex; 
+   justify-content: left;
+    margin-left: 2%;
+    margin-right:2% ;
+    flex-wrap: wrap;
+
+}

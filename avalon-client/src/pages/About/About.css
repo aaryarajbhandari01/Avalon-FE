@@ -1,0 +1,112 @@
+.heroSection{
+    align-items: center;
+    padding: 40px;
+    /* background-color: blue; */
+
+}
+
+.heroSection-container{
+    margin: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    max-width: 100rem;
+}
+
+.grid{
+    display: grid;
+    gap:9rem;
+}
+
+.grid-two-column{
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.heroSection button{
+    text-decoration: none;
+    height: 40px;
+    max-width: auto;
+    background-color: rgb(196, 221, 203);
+    border: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.heroSection .shopBtn span{
+    font-size: small;
+    font-weight: 400;
+    text-transform: uppercase;
+    padding: 5px;
+    color: rgb(11, 80, 57);
+}
+/* 
+.heroSection .shopBtn button:hover, .heroSection .shopBtn button:active{
+box-shadow: 0 2rem 2rem 0 rgb(11 80 57/ 50%);
+} */
+
+.heroSection a{
+    text-decoration: none;
+    color: rgb(11, 80, 57);
+}
+
+
+    
+.heroSection img{
+    min-width: 10rem;
+    height: 10 rem;
+}
+
+.hero-section-data p{
+    margin: 2rem 0;
+    color: rgb(8, 52, 36);
+
+   
+}
+
+
+.hero-section-data h1{
+    text-transform: capitalize;
+    color: rgb(11, 80, 57);
+
+}
+.heroSection .intro-data{
+    margin-bottom: 0;
+}
+
+.hero-section-image{
+    width:100%;
+    height:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.heroSection img{
+    min-width: 10rem;
+    height: 10rem;
+}
+
+.heroSection .img-style{
+    width: 100%;
+    height: auto;
+}
+
+.heroSection figure{
+    position: relative;
+    margin-top: 50px;
+
+}
+
+
+
+.heroSection figure::after{
+    content: "";
+    /* width: 120px;
+    height: 80px; */
+    width: 60%;
+    height: 80%;
+    background-color: rgba(21, 135, 72, 0.4);
+    position: absolute;
+    left: 50%;
+    top: -5rem;
+    z-index: -1;
+}

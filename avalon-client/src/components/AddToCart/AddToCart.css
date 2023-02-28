@@ -1,0 +1,118 @@
+/* section .addToCart{
+
+} */
+
+section .addToCart .colors p {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+
+section .colorBtnStyle {
+    width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  /* border: none; */
+  /* border-width: 1px; */
+  outline: none;
+  opacity: 0.7;
+  cursor: pointer;
+  /* margin: 0px 5px; */
+  margin-left: 1rem;
+
+
+}
+
+section .colorBtnStyle:hover{
+    opacity: 1;
+}
+
+section .sizeBtnStyle {
+  width: 30px;
+height: 30px;
+border-radius: 0%;
+border: none;
+background-color: #fff;
+outline: none;
+opacity: 0.5;
+cursor: pointer;
+/* margin: 0px 5px; */
+margin-left: 1rem;
+margin-top: 15px;
+
+
+}
+
+
+section .sizeBtnStyle:hover{
+  opacity: 1;
+}
+
+section .active{
+    opacity: 1;
+}
+
+section .checkStyle {
+    font-size: 18px;
+    width: 20px;
+    color: #a5c1b0;
+    
+  }
+
+ .addToCart .amount-toggle {
+    /* background-color: aqua; */
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content:flex-start;
+    gap: 15px;
+    align-items: center;
+    /* font-size: 1.4rem; */
+
+  }
+
+  .addToCart .amount-toggle button {
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+    width: 30px;
+  }
+
+  .addToCart .amount-toggle .qtyIcon{
+    width: 14px;
+  }
+  .addToCart .amount-toggle .amount-style {
+    font-weight: 500;
+    font-size: 16px;
+    color: rgb(66, 136, 113);
+    /* color: ${({ theme }) => theme.colors.btn}; */
+  }
+
+  .addToCart button .add {
+    width: 220px;
+    padding: 10px;
+    background-color: #178488c2;
+    /* background-color: #1d888c; */
+
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    cursor: pointer;
+    border: none;
+    font-weight: 500;
+  }
+
+/* .cartQty{
+    display: flex;
+    justify-content: space-between; 
+  } */
+  .addToCart .cart{
+    padding-top: 10px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }

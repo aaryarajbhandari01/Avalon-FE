@@ -1,0 +1,51 @@
+.imgWrapper {
+     display: grid;
+     grid-template-columns: 0.3fr 1fr;
+     gap: 1rem;
+ } 
+     
+.imgWrapper .grid {
+     display: flex;
+     flex-direction: row;
+     justify-items: center;
+     align-items: center;
+     width: 100%;
+     gap: 1rem;
+ } 
+     
+.imgWrapper .grid img {
+     max-width: 100%;
+     max-height: 100%;
+     background-size: cover;
+     object-fit: contain;
+     cursor: pointer;
+ } 
+     
+.imgWrapper .main-screen {
+     display: grid;
+     place-items: center;
+     order: 1;
+ } 
+     
+.imgWrapper .main-screen img {
+     max-width: 100%;
+     height: auto;
+ } 
+     
+.imgWrapper .grid-four-column {
+     display: grid;
+     grid-template-rows: repeat(4, 1fr);
+     grid-template-columns: 1fr;
+ } 
+     
+.imgWrapper .grid-four-column {
+     display: flex;
+     flex-direction: column;
+     order: 1;
+ } 
+     
+.imgWrapper .grid-four-column .grid-four-column {
+     grid-template-rows: 1fr;
+     grid-template-columns: repeat(4, 1fr);
+ }
+
