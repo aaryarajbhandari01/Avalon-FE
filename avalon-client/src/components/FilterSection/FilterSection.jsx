@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaCheck } from 'react-icons/fa';
 import { useFilterContext } from '../../context/filterContext'
 import "./FilterSection.css"
 
 const FilterSection = () => {
+
+  
 
   const{
     filters:{text, category,color}, 
@@ -13,21 +15,6 @@ const FilterSection = () => {
   // console.log('category',category)
 
 
-  // to get unique data of each field for category
-  // const getUniqueData= (data, prop) =>{
-  //   let newVal = data.map((curElem) => { //mapping partifular object field
-  //       return curElem[prop];
-  //   });
-  //   console.log('category name',newVal);
-
-  //   return newVal = ["all", ...new Set(newVal)]; //all array data and spread operator for unique data
-  // };
-  
-
-
-  // //unique categorydata
-  // const categoryOnlyData = getUniqueData(all_products, "category"); //passing all product data and category field as argument
-  // console.log('FilterSection.jsx category data for all_products',all_products)
 
  // Extract all category names
  const categories = all_products.map((product) => product.category.name);
@@ -44,6 +31,7 @@ const uniqueColors = ["all", ...new Set(colors)];
       <div className="filter-search">
         <form onSubmit={(e) =>e.preventDefault()}>
           <input 
+              id="searchBar"
               type="text" 
               name="text" 
               value={text} 

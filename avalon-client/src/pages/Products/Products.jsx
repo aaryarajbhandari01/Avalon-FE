@@ -1,4 +1,3 @@
-import { SignalCellularNullOutlined } from '@mui/icons-material'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
@@ -17,6 +16,7 @@ const Products = () => {
       window.scrollTo(0,0)
     }, [])
 
+    
 
   return (
     <div className='products'>

@@ -433,3 +433,11 @@ align-items: center;
     font-weight: bold;
     color:rgb(118, 158, 118);
   }
+
+
+  .cart .checkout-btn{
+padding: 10px;
+color: rgb(27, 80, 62);
+background-color: white;
+border-width: 1px;
+  }

@@ -1,0 +1,84 @@
+.register-container{
+    height: 100vh;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.register-wrapper{
+    width: 25%;
+    padding: 20px;
+    background-color: rgb(242, 242, 242);
+    align-items: center;
+    border-radius: 10px;
+    justify-content: center;
+}
+.register-wrapper .title{
+  display: flex;
+align-items: center;
+justify-content: center;
+padding: 5px;
+}
+
+.register-wrapper h3{
+font-weight: 300;
+text-transform: uppercase;
+}
+
+.register-container form{
+    display: flex;
+    flex-direction: column;
+}
+.register-container .form-group{
+padding: 20px;
+/* background-color: antiquewhite; */
+align-items: center;
+    justify-content: center;
+}
+
+.register-container input{
+    flex: 1;
+    min-width: 50%;
+    width: 90%;
+    margin-bottom: 10px;
+    padding: 10px;
+    margin-top: 0;
+}
+
+
+
+.register-container button{
+    width: 50%;
+    border: none;
+    padding: 10px 15px;
+    background-color: rgb(185, 224, 203);
+    color: white;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.register-container .register-btn{
+padding: 10px;
+margin: 15px;
+
+}
+.register-container .register-wrapper p{
+font-size: smaller;
+padding-top: 10px;
+}
+
+.register-container .link a{
+    margin: 5px 0px;
+    font-size: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.register-container .register-wrapper p span{
+    color: rgb(27, 88, 54);
+    font-size: small;
+    font-weight: 400;
+
+}

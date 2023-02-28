@@ -1,75 +1,70 @@
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-
-const Container = styled.div`
-  height: 100vh;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    ),
-      center;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Wrapper = styled.div`
-  width: 40%;
-  padding: 20px;
-  background-color: white;
-`;
-
-const Title = styled.h1`
-  font-size: 24px;
-  font-weight: 300;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const Input = styled.input`
-  flex: 1;
-  min-width: 40%;
-  margin: 20px 10px 0px 0px;
-  padding: 10px;
-`;
+import "./Register.css"
 
 const Agreement = styled.span`
   font-size: 12px;
   margin: 20px 0px;
 `;
 
-const Button = styled.button`
-  width: 40%;
-  border: none;
-  padding: 15px 20px;
-  background-color: teal;
-  color: white;
-  cursor: pointer;
-`;
-
 const Register = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
-    <Container>
-      <Wrapper>
-        <Title>CREATE AN ACCOUNT</Title>
-        <Form>
-          <Input placeholder="name" />
-          <Input placeholder="last name" />
-          <Input placeholder="username" />
-          <Input placeholder="email" />
-          <Input placeholder="password" />
-          <Input placeholder="confirm password" />
-          <Agreement>
+    <div className="register-container">
+      <div className="register-wrapper">
+        <div className="title"><h3 className="title">CREATE AN ACCOUNT</h3></div>
+        <form className="form-group" 
+        // onSubmit={handleregister}
+        >
+          <input 
+            // type="username"
+            placeholder="Username" 
+            // value={username}
+            // onChange={(e) => setUsername(e.target.value)}
+          />
+          <input 
+            type="password"
+            placeholder="Password"
+            // value={password}
+            // onChange={(e) => setPassword(e.target.value)}
+         />
+         <input 
+         className="name"
+            placeholder="first name"
+         />
+         <input 
+         className="name"
+
+            placeholder="last name"
+         />
+         <input 
+            placeholder="email"
+         />
+         <input 
+            placeholder="confirm password"
+         />
+            <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
           </Agreement>
-          <Button>CREATE</Button>
-        </Form>
-      </Wrapper>
-    </Container>
+          <button type="submit" className="register-btn">Register</button>
+          {/* <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link> */}
+
+          <p>Already have an account?</p>
+          <Link className ="link" to="/login">
+               <p> <span>Login to Avalon</span> </p>
+          </Link> 
+        </form>
+      </div>
+    </div>
+    
+       
+          
   );
 };
 

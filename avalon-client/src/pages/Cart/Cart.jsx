@@ -1,15 +1,21 @@
-import { Add, Remove } from '@mui/icons-material'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import "./Cart.css"
 import CartItem from '../../components/CartItem/CartItem'
 import { useCartContext } from '../../context/cartContext'
-import styled from "styled-components";
 
+// import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const Cart = () => {
 
   const {total_item, cart, clearCart, shipping_fee, total_price} = useCartContext();
   console.log("file: Cart.js ~ cart", cart);
+
+  const navigate = useNavigate();
+
+  const checkoutHandler = () => {
+    navigate('/login?redirect=shipping');
+  }
  
   if (cart.length === 0){
     return  <section  className='cart'>
@@ -29,6 +35,10 @@ const Cart = () => {
               </div>
             </section>
   }
+
+  // const checkoutHandler = () =>{
+  //   history.push('/login?redirect=shipping')
+  // }
 
   return (
     <section  className='cart'>
@@ -111,7 +121,17 @@ const Cart = () => {
               NRs{shipping_fee + total_price}
               </p>
             </div>
+
+            <button  
+            className="checkout-btn" 
+            type="button"
+            disabled={total_item.length === 0}
+            onClick={checkoutHandler}
+            >
+                <span>CHECKOUT NOW</span>
+            </button>
           </div>
+          
           </div>
         </div>
     

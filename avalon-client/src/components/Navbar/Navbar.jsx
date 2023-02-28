@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
@@ -11,6 +11,18 @@ const Navbar = () => {
 
   //geting total item in  cart
   const {total_item} = useCartContext();
+  
+  const handleSearchClick = () => {
+    // Scroll to the search bar
+    const searchBar = document.getElementById('searchBar');
+    searchBar.scrollIntoView({ behavior: 'smooth' });
+
+    // Highlight the search bar
+    searchBar.style.backgroundColor = '#c6e8df';
+    setTimeout(() => {
+      searchBar.style.backgroundColor = '';
+    }, 2000); // remove highlight after 2 seconds
+  };
 
   return (
     <div className = 'navbar'>
@@ -49,7 +61,7 @@ const Navbar = () => {
             <div className="icons">
               {/* <div className="search"> */}
                 {/* <input type="text" placeholder="Seach Items"/> */}
-                 <Link className ="link" to="/products">
+                 <Link className ="link" to="/products" onClick={handleSearchClick}>
                     <SearchIcon/>
                   </Link>
                {/* </div> */}
