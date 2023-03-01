@@ -1,7 +1,8 @@
 import React from 'react'
 
 const Review = ({reviews}) => {
-    console.log(reviews);
+    
+  console.log(reviews);
     
   return (
     <div>

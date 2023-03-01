@@ -88,7 +88,7 @@ const SingleProduct = () => {
             <div className="right">
               <div className='top'>
                 <h1>{name}</h1>
-                {quantity >0 ? <span className='inStock'>In Stock</span> : <span className='outOfStock'>Out of Stock</span>}
+                {quantity > 0 ? <span className='inStock'>In Stock</span> : <span className='outOfStock'>Out of Stock</span>}
               </div>
 
               <span className='price'>NRs. {price}</span>
@@ -161,9 +161,9 @@ const SingleProduct = () => {
              <hr/>
             
             <div class="main_reviews-container">
-              <p class="review_answer">
+              <div class="review_answer">
                 <Review reviews={product_review}/>
-              </p>
+              </div>
             </div>
          </div>
           </div>

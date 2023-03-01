@@ -1,14 +1,35 @@
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "./Register.css"
+import axios from "axios";
 
-const Agreement = styled.span`
-  font-size: 12px;
-  margin: 20px 0px;
-`;
 
 const Register = () => {
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+
+  const handleRegister = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post("http://127.0.0.1:8000/api/account/user/register/", {
+        username,
+        password,
+        first_name: firstName,
+        last_name: lastName,
+        email,
+      });
+      console.log(response.data); // or redirect to another page
+    } catch (error) {
+      console.log(error.response.data);
+      setError(error.response.data); // display error message
+    }
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -18,40 +39,46 @@ const Register = () => {
     <div className="register-container">
       <div className="register-wrapper">
         <div className="title"><h3 className="title">CREATE AN ACCOUNT</h3></div>
-        <form className="form-group" 
-        // onSubmit={handleregister}
+        <form 
+          className="form-group" 
+          onSubmit={handleRegister}
         >
           <input 
-            // type="username"
-            placeholder="Username" 
-            // value={username}
-            // onChange={(e) => setUsername(e.target.value)}
+             type="text"
+             placeholder="Username" 
+             value={username}
+             onChange={(e) => setUsername(e.target.value)}
           />
           <input 
             type="password"
             placeholder="Password"
-            // value={password}
-            // onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
          />
          <input 
-         className="name"
-            placeholder="first name"
+            type="text"
+            placeholder="First name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
          />
          <input 
-         className="name"
+            type="text"
+            placeholder="Last name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+         />
+         <input 
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+         />
+            {error && <p>{error}</p>}
 
-            placeholder="last name"
-         />
-         <input 
-            placeholder="email"
-         />
-         <input 
-            placeholder="confirm password"
-         />
-            <Agreement>
+            <p className="agreement">
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
-          </Agreement>
+          </p>
           <button type="submit" className="register-btn">Register</button>
           {/* <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link> */}
 

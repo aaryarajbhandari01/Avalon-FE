@@ -14,29 +14,23 @@ const Footer = () => {
         </div>
         <div className="item">
           <h1>Categories</h1>
-          <span>Women</span>
-          <span>Men</span>
-          <span>Shoes</span>
-          <span>Accessories</span>
-          <span>New Arrivals</span>
+          <span>Tops</span>
+          <span>Bottoms</span>
+          <span>Dresses</span>
+          
         </div>
         <div className="item">
           <h1>Links</h1>
           <span>FAQ</span>
           <span>Pages</span>
           <span>Stores</span>
-          <span>Compare</span>
-          <span>Cookies</span>
         </div>
         <div className="item">
           <h1>About</h1>
           <span><h5>Avalon Apparels	&#169; </h5></span>
           <span><p>Shopping & Retail Online clothing brand</p></span>
           <span>
-            Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit
-            amet conse ctetur adipisicing elit, seddo eiusmod tempor incididunt
-            ut labore etdolore.
+          Welcome to Avalon Apparels, your go-to destination for stylish and affordable fashion. We are a leading online clothing store dedicated to providing our customers with the latest fashion trends, exceptional quality, and an unparalleled shopping experience.
           </span>
         </div>
         <div className="item">
