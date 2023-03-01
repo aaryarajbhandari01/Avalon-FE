@@ -1,36 +1,41 @@
 // import { combineReducers} from 'redux';
 // import {productListReducers,productDetailsReducers} from '../reducers/productReducers';
-// import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 // // import { cartReducer } from './reducers/cartReducers';
 // // import { userLoginReducers } from './reducers/userReducers';
 // // import { userRegisterReducers } from './reducers/userReducers';
 
 
-// const reducer =combineReducers({
-//     productList:productListReducers,
-//     productDetails:productDetailsReducers,
-//     // cart:cartReducer,
-//     // userLogin:userLoginReducers,
-//     // userRegister:userRegisterReducers,
-// })
+// import { cartReducer } from './reducers/cartReducers';
+import { combineReducers } from 'redux';
+import { userLoginReducers } from '../reducers/userReducers';
 
-// // const cartItemsFromStorage = localStorage.getItem('cartItems')?
-// // JSON.parse(localStorage.getItem('cartItems')): []
 
-// // const userInfoFromStorage = localStorage.getItem('userInfo')?
-// // JSON.parse(localStorage.getItem('userInfo')): null
+const reducer = combineReducers({
+    // cart:cartReducer,
+    // registering login reducer and reducer
+    userLogin:userLoginReducers,
+    // userRegister:userRegisterReducers,
+})
 
 
 
-// const initailState = {
-//     // cart:{cartItems:cartItemsFromStorage},
-//     // userLogin:{userInfo:userInfoFromStorage}
-// }
+//geting userinfo
+const userInfoFromStorage = localStorage.getItem('userInfo')?
+JSON.parse(localStorage.getItem('userInfo')): null //null if cant find user 
 
 
+//seting userInfo in state
+const initailState = {
+   // cart:{cartItems:cartItemsFromStorage},
+    userLogin:{userInfo:userInfoFromStorage} 
+}
 
-// const store = configureStore({
-//     reducer,
-//     initailState
-// })
-// export default store;
+
+const store = configureStore({
+    reducer,
+    initailState
+})
+
+
+export default store;

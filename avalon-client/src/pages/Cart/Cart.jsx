@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import "./Cart.css"
 import CartItem from '../../components/CartItem/CartItem'
 import { useCartContext } from '../../context/cartContext'
-
-// import { useHistory } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+
+
 const Cart = () => {
 
   const {total_item, cart, clearCart, shipping_fee, total_price} = useCartContext();
@@ -17,6 +17,13 @@ const Cart = () => {
     navigate('/login?redirect=home');
   }
  
+  const confirmClearCart = () => {
+    const confirmed = window.confirm('Are you sure you want to clear your cart?');
+    if (confirmed) {
+      clearCart();
+    }
+  }
+
   if (cart.length === 0){
     return  <section  className='cart'>
                 <div className='title'>
@@ -87,7 +94,8 @@ const Cart = () => {
           <button>Apply Promo</button>
           <button 
             className="btn btn-clear" 
-            onClick={clearCart}
+            // onClick={clearCart}
+            onClick={confirmClearCart}
             >
             Clear Cart
           </button>

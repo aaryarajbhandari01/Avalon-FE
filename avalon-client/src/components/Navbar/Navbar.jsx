@@ -6,8 +6,17 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Link } from "react-router-dom";
 import "./Navbar.css"
 import { useCartContext } from "../../context/cartContext";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from '../../actions/userAction'
+
+
 
 const Navbar = () => {
+
+  const userLogin = useSelector(state => state.userLogin)
+  const { userInfo } = userLogin
+
+  const dispatch = useDispatch()
 
   //geting total item in  cart
   const {total_item} = useCartContext();
@@ -23,6 +32,11 @@ const Navbar = () => {
       searchBar.style.backgroundColor = '';
     }, 2000); // remove highlight after 2 seconds
   };
+
+  const logoutHandler = () =>{
+    dispatch(logout())
+    console.log('logout')
+  }
 
   return (
     <div className = 'navbar'>
@@ -65,17 +79,38 @@ const Navbar = () => {
                     <SearchIcon/>
                   </Link>
                {/* </div> */}
-            <PersonOutlineIcon/>
+
+            {/* <PersonOutlineIcon/> */}
+            
             <Link className ="link" to="/myCart">
             <div className="cartIcon">
               <ShoppingCartOutlinedIcon/>
               <span>{total_item}</span>
             </div>
             </Link>
-            <div></div>
-             <div className="item">
+
+            {userInfo ? (
+              <>
+              <div title={userInfo.first_name} id='username' >
+                <Link to='/profile' className="icons">
+                <PersonOutlineIcon/>
+                </Link>
+
+              </div>
+                <div onClick={logoutHandler}>Logout</div>
+                </>
+
+            ) : (
+              <div className="item">
               <Link className ="link" to="/login">Login</Link>
             </div>
+            )}
+
+
+            <div></div>
+             {/* <div className="item">
+              <Link className ="link" to="/login">Login</Link>
+            </div> */}
             </div>
         </div>
         </div>

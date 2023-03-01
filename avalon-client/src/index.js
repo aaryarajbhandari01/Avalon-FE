@@ -22,6 +22,8 @@ root.render(
   // <React.StrictMode>
 
   //to get global store data
+<Provider store={store}>
+
   <AppProvider> 
     <FilterContextProvider>
       {/* <ReviewProvider> */}
@@ -31,6 +33,7 @@ root.render(
     </FilterContextProvider>
   {/* </React.StrictMode> */}
   </AppProvider>
+  </Provider>,
 
 );
 
