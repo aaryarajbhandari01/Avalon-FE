@@ -8,14 +8,14 @@ import { configureStore } from '@reduxjs/toolkit';
 
 // import { cartReducer } from './reducers/cartReducers';
 import { combineReducers } from 'redux';
-import { userLoginReducers } from '../reducers/userReducers';
+import { userLoginReducers , userRegisterReducers} from '../reducers/userReducers';
 
 
 const reducer = combineReducers({
     // cart:cartReducer,
     // registering login reducer and reducer
     userLogin:userLoginReducers,
-    // userRegister:userRegisterReducers,
+    userRegister:userRegisterReducers,
 })
 
 

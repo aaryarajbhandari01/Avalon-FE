@@ -2,7 +2,13 @@ import {
     USER_LOGIN_REQUEST,
     USER_LOGIN_SUCCESS,
     USER_LOGIN_FAIL,
-    USER_LOGOUT
+
+    USER_LOGOUT,
+
+    USER_REGISTER_REQUEST,
+    USER_REGISTER_SUCCESS,
+    USER_REGISTER_FAIL,
+
  } from '../constants/UserConstants'
 
 
@@ -32,20 +38,29 @@ import {
     
     }
 
-    // export const productDetailsReducers = (state={ product:{reviews:[]} },action) =>{
+    export const userRegisterReducers =(state={} ,action)=>{
     
-    //     switch(action.type){
-    //         case PRODUCT_DETAILS_REQUEST:
-    //             return {loading:true,...state}
+        switch(action.type){
+            case USER_REGISTER_REQUEST: 
+            //returning user object , empty array as we're loading data
+                return { loading: true }
     
-    //         case PRODUCT_DETAILS_SUCCESS:
-    //             return {loading:false,product:action.payload}
-                
-    //         case PRODUCT_DETAILS_FAIL:
-    //             return {loading:false, error: action.payload }
+            case USER_REGISTER_SUCCESS:
+            //loading data sucessfull
+                return { loading: false, userInfo: action.payload}
+            
+            case USER_REGISTER_FAIL:
+             // error attribute and response from payload
+                return { loading:false, error: action.payload }
     
-    //         default:
-    //             return state
-    //     }
+            case USER_LOGOUT:
+                return{} //clearing user info
+
+            default:
+                return state
+        }
     
-    // }
+    
+    
+    }
+

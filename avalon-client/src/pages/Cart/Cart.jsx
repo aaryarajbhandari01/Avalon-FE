@@ -4,6 +4,7 @@ import "./Cart.css"
 import CartItem from '../../components/CartItem/CartItem'
 import { useCartContext } from '../../context/cartContext'
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 const Cart = () => {
@@ -12,11 +13,20 @@ const Cart = () => {
   console.log("file: Cart.js ~ cart", cart);
 
   const navigate = useNavigate();
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
-  const checkoutHandler = () => {
-    navigate('/login?redirect=home');
-  }
  
+
+  //navigating checking is user is logged in and then navigating the user to shipping
+ const checkoutHandler = () => {
+    if (userInfo) {
+      navigate('/shipping');
+    } else {
+      navigate('/login?redirect=shipping');
+    }
+  };
+
   const confirmClearCart = () => {
     const confirmed = window.confirm('Are you sure you want to clear your cart?');
     if (confirmed) {

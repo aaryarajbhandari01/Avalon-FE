@@ -6,7 +6,10 @@
     justify-content: center;
     margin-top: 50px;
 }
-
+.form-error{
+    color: red;
+   
+}
 .register-wrapper{
     width: 25%;
     padding: 20px;
