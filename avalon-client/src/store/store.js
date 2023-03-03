@@ -8,7 +8,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 // import { cartReducer } from './reducers/cartReducers';
 import { combineReducers } from 'redux';
-import { userLoginReducers , userRegisterReducers} from '../reducers/userReducers';
+import { userDetailsReducers, userLoginReducers , userRegisterReducers} from '../reducers/userReducers';
 
 
 const reducer = combineReducers({
@@ -16,6 +16,7 @@ const reducer = combineReducers({
     // registering login reducer and reducer
     userLogin:userLoginReducers,
     userRegister:userRegisterReducers,
+    userDetails:userDetailsReducers,
 })
 
 

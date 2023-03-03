@@ -1,0 +1,44 @@
+.profilecontainer {
+    padding: 30px 50px;
+    display: flex;
+  }
+
+.profilecontainer  .grid-filter-column{
+    grid-template-columns: 0.5fr 1fr;
+  }
+.profilecontainer  .left {
+    flex: 1;
+    position: sticky;
+    height: 100%;
+    /* top: 10px; */
+    top: 110px;
+    background-color: azure;
+  }
+.profilecontainer  .left .filterItem {
+    margin-bottom: 30px;
+  }
+.profilecontainer  .left .filterItem h3 {
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+.profilecontainer  .left .filterItem .inputItem {
+    margin-bottom: 10px;
+  }
+.profilecontainer  .left .filterItem .inputItem label {
+    margin-left: 10px;
+  }
+.profilecontainer  .right {
+    background-color: azure;
+    flex: 3;
+  }
+.profilecontainer  .right .catImg {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 50px;
+  }
+
+  .profilecontainer input{
+    padding: 7px;
+    margin: 5px;
+  }

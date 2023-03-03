@@ -20,6 +20,7 @@ import Register from './pages/Register/Register';
 import Checkout from './pages/Checkout/Checkout'; 
 import {Home, Cart, CartPage, CategoryProducts, SingleProduct, Products} from "../src/pages/index"
 import ErrorPage from './pages/ErrorPage/ErrorPage';
+import Profile from './pages/Profile/Profile';
 
 
 
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
      {
       path: "/shipping", 
      element: <Home/>,
+   },
+    {
+      path: "/profile", 
+     element: <Profile/>,
    },
      {
       path:"*", 

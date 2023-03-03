@@ -39,6 +39,7 @@ const Login = ({location, history}) => {
 
     //dispatching action
     dispatch(login(username, password))
+    
   }
   // const handleLogin = async (e) => {
   //   e.preventDefault();
@@ -95,7 +96,7 @@ const Login = ({location, history}) => {
           <Link 
               className ="link" 
               // to="/register"
-              to={redirect ? `/register?redirect=${redirect}` : '/register' }
+              to={redirect ? `/register?redirect=${redirect}` : '/home' }
               >
                <p> <span>Create a new account</span> </p>
           </Link> 

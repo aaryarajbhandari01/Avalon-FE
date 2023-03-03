@@ -9,6 +9,10 @@ import {
     USER_REGISTER_SUCCESS,
     USER_REGISTER_FAIL,
 
+    USER_DETAILS_REQUEST,
+    USER_DETAILS_SUCCESS,
+    USER_DETAILS_FAIL,
+
  } from '../constants/UserConstants'
 
 
@@ -55,6 +59,31 @@ import {
     
             case USER_LOGOUT:
                 return{} //clearing user info
+
+            default:
+                return state
+        }
+    
+    
+    
+    }
+
+    export const userDetailsReducers =(state={user:{}} ,action)=>{
+    
+        switch(action.type){
+            case USER_DETAILS_REQUEST: 
+            //returning user object , empty array as we're loading data
+                return {...state, loading: true }
+    
+            case USER_DETAILS_SUCCESS:
+            //loading data sucessfull
+                return { loading: false, user: action.payload}
+            
+            case USER_DETAILS_FAIL:
+             // error attribute and response from payload
+                return { loading:false, error: action.payload }
+    
+        
 
             default:
                 return state
