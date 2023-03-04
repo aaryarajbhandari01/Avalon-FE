@@ -7,7 +7,7 @@ import './Shipping.css'
 
 const Shipping = ({history}) => {
 
-    const {saveShippingAddress, } = useCartContext();
+    const {saveShippingAddress } = useCartContext();
   const {total_item, cart, clearCart, shipping_fee, total_price, } = useCartContext();
  
 const navigate = useNavigate()
@@ -27,7 +27,7 @@ const navigate = useNavigate()
 
   return (
     <>
-    <CheckOutSteps/>
+    <CheckOutSteps step1 step2 />
 
     <div className='shippingContainer'>
         <div className='shippingWrapper'>

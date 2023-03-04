@@ -3,7 +3,7 @@
   
   
   
-  .shippingContainer{
+  .paymentContainer{
     width: 95%;
     display: flex;
     justify-content: center;
@@ -14,11 +14,11 @@
     max-width: 40rem;
     padding: 10vw 2rem 0;
     margin: 0 auto;
-    height: 75vh;
+    height: 40vh;
 
   }
 
-  .formGroup{
+  .paymentContainer .formGroup{
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -27,26 +27,26 @@
     border-radius: .25rem;
   }
 
-  .shippingContainer .shippingWrapper{
+
+
+  .paymentContainer .paymentWrapper{
 justify-content: center;
 align-items: center;
-padding: 25px;
+padding: 40px;
 margin: 10px;
+padding-bottom: 10px;
 background-color: #ecedec;
-
+width: 300px;
 /* display: inline-flex; */
 background: #fff;
-/* height: 100%; */
-/* width: 100%; */
-/* align-items: center; */
-/* justify-content: space-evenly; */
+
 border-radius: 5px;
 /* padding: 20px 15px; */
 box-shadow: 5px 5px 30px rgba(0,0,0,0.2);
 
   }
 
-  .shipping-details-form{
+  .payment-details-form{
 /* padding: 20px;
 margin: 10px;
 justify-content: center;
@@ -56,45 +56,47 @@ display: grid;
 grid-gap: 0.7rem;
   }
 
-  .shipping-details-form {
+  .paymentContainer  .payment-details-form {
    
-padding:10px ;
+padding:20px ;
   }
 
   
-  .shippingContainer h2{
+  .paymentContainer h2{
 font-weight: 300;
-padding: 5px;
+padding: 2px;
 padding-left: 0;
 text-transform: uppercase;
-padding-bottom: 15px;
+padding-bottom: 5px;
   }
 
-  .shipping-details-form input{
-width: 300px;
+  .paymentContainer  .payment-details-form input{
+width: 50px;
 padding: 8px;
-/* margin-top: 5px; */
+margin-top: 5px;
 border-width: 1px ;
 border-radius: 2px;  }
 
 
-.formGroup{
-    padding-top: 10px;
+.paymentContainer .formGroup h4{
+    padding-top: 0px;
+    font-weight: 300;
+    padding-bottom: 10px;
       }
 
- .shipping-details-form label{
+      .paymentContainer  .payment-details-form label{
 /* padding-bottom: 10px; */
 font-size:smaller ;
 color: gray;
   }
   
-.shipping-details-form .shippingSubmitBtn{
+  .paymentContainer  .payment-details-form .paymentSubmitBtn{
  align-items: center;
 justify-content: center;
 padding: 10px;
 }
 
-.shippingWrapper button{
+.paymentContainer  .paymentWrapper button{
     width: 100px;
     padding: 5px;
     margin: 10px;
@@ -118,6 +120,6 @@ padding: 10px;
 }  
 
 
-.shippingWrapper button:focus-visible {
+.paymentContainer .paymentWrapper button:focus-visible {
     background-color: #333;
   }

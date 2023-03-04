@@ -15,37 +15,51 @@ function CheckOutSteps({step1, step2, step3, step4}) {
        
         <Nav.Item className='steps'>
             {step1 ? (
-                 <LinkContainer to="/login">
-                 <Nav.Link>Login</Nav.Link>
+                 <LinkContainer to="/myCart" className='link active-category'>
+                 <Nav.Link >
+                 <ShoppingCartIcon/>
+                    {/* Login */}
+                    </Nav.Link>
              </LinkContainer>
             ):(
                 <Nav.Link disabled> <ShoppingCartIcon/> </Nav.Link>
             )}
         </Nav.Item>
 
+        <div class="connect"></div>
+
         <Nav.Item className='steps'>
             {step2 ? (
-                 <LinkContainer to="/shipping">
-                 <Nav.Link>Shipping</Nav.Link>
+                 <LinkContainer to="/shipping" className='link active-category'>
+                 <Nav.Link>
+                    {/* Shipping */}
+                    <AddLocationAltIcon/>
+                    </Nav.Link>
              </LinkContainer>
             ):(
                 <Nav.Link disabled> <AddLocationAltIcon/></Nav.Link>
             )}
         </Nav.Item>
 
+        <div class="connect"></div>
+
+
         <Nav.Item className='steps'>
             {step3 ? (
-                 <LinkContainer to="/payment">
-                 <Nav.Link>Payment</Nav.Link>
+                 <LinkContainer to="/payment" className='link active-category'>
+                 <Nav.Link><PaymentIcon/></Nav.Link>
              </LinkContainer>
             ):(
                 <Nav.Link disabled> <PaymentIcon/></Nav.Link>
             )}
         </Nav.Item>
 
+        <div className="connect "></div>
+
+
         <Nav.Item className='steps'>
             {step4 ? (
-                 <LinkContainer to="/placeorder">
+                 <LinkContainer to="/placeorder" className='link active-category'>
                  <Nav.Link>Place Order</Nav.Link>
              </LinkContainer>
             ):(

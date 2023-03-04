@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import "./Login.css"
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -14,6 +14,7 @@ const Login = ({location, history}) => {
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch()
+const navigate = useNavigate()
 
   const redirect = location && location.search ? location.search.split('=')[1] : '/'  
   useEffect(() => {
@@ -28,9 +29,13 @@ const Login = ({location, history}) => {
 
   //redirecting user back on the page they were on if loged in
   useEffect(() => {
-    if (history && userInfo) {
-      history.push(redirect);
-    }
+    // if (history && userInfo) {
+    //   history.push(redirect);
+    // }
+
+    if(userInfo) {
+      navigate(redirect)
+  }
   }, [history, userInfo, redirect]);
 
   const handleLogin = (e) => {
@@ -40,7 +45,8 @@ const Login = ({location, history}) => {
     //dispatching action
     dispatch(login(username, password))
 
-    
+      
+ 
   }
   // const handleLogin = async (e) => {
   //   e.preventDefault();
@@ -69,7 +75,7 @@ const Login = ({location, history}) => {
       setIsLoggedIn(true);
     }
   }, []);
-  
+
   return (
     <div className="login-container">
       <div className="login-wrapper">

@@ -13,5 +13,39 @@
 
 .checkoutstepsContainer .steps{
     padding: 10px;
-    color: gray;
+    color: rgb(172, 174, 173);
 }
+
+.checkoutstepsContainer .steps .active-category{
+color:rgb(133, 180, 180);
+/* color:rgb(133, 180, 171); */
+
+}
+
+.connect::before, .connect::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    text-align: center;
+    line-height: 10px;
+    border-radius: 5px;
+    background: rgb(188, 197, 192);
+    margin: 0;
+    display: inline-block;
+    position: absolute;
+    top: -4px;
+  }
+  .connect::before {
+    left: -5px;
+  }
+  .connect::after {
+    right: -5px;
+  }
+  .connect {
+    width: 150px;
+    height: 2px;
+    background: darkGray;
+    position: relative;
+  }
+
+  

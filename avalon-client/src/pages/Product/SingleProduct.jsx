@@ -141,8 +141,8 @@ const SingleProduct = () => {
              {/* <ReviewForm productId={id} onSubmit={handleReviewSubmit} /> */}
              <hr/>
             
-            <div class="main_reviews-container">
-              <div class="review_answer">
+            <div className="main_reviews-container">
+              <div className="review_answer">
                 <Review reviews={product_review}/>
               </div>
             </div>

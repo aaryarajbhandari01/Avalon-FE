@@ -22,6 +22,7 @@ import {Home, Cart, CartPage, CategoryProducts, SingleProduct, Products} from ".
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import Profile from './pages/Profile/Profile';
 import Shipping from './pages/Shipping/Shipping';
+import Payment from './pages/Payment/Payment';
 
 
 
@@ -84,7 +85,7 @@ const router = createBrowserRouter([
    },
    {
     path: "/payment", 
-   element: <Home/>,
+   element: <Payment/>,
  },
     {
       path: "/profile", 
