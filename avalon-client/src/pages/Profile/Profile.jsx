@@ -41,7 +41,7 @@ const [firstName, setFirstName] = useState("");
       
     } else {
         if(!user || !user.username){
-            dispatch(getUserDetails('profile'))
+            dispatch(getUserDetails('profile')) //getting data 
         }else{
             setUsername(user.username) //setting profile details with api details
             setEmail(user.email)
@@ -73,22 +73,25 @@ console.log('profile updating')    }
 
   return (
     <>
-        <h2>Profile</h2>
-    
+    <div className="profile-title">
+    <h2>My Profile</h2>
+    </div>
     <div className="profilecontainer">
-
+      
     <div className="grid grid-filter-column">
 
         <div className="left">
         <h3>User Profile</h3>
-        <p>test user</p>
+        {/* <p>test user</p> */}
         {error && <p>{error}</p>}
 
         <form 
         className="form-group" 
         onSubmit={handleRegister}
         >
+          <label>Username</label>
         <input 
+        disabled
             required
             id="username"
             type="text"
@@ -96,7 +99,8 @@ console.log('profile updating')    }
             value={username}
             onChange={(e) => setUsername(e.target.value)}
         />
-        <input 
+        
+        {/* <input 
             required
             id="password"
             type="password"
@@ -111,8 +115,12 @@ console.log('profile updating')    }
             placeholder="Confirm Password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-        />
+        /> */}
+          <label>First Name</label>
+
         <input 
+        disabled
+
             required
             id="firstName"
             type="text"
@@ -120,15 +128,23 @@ console.log('profile updating')    }
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
         />
+          <label>Last Name</label>
+
         <input 
+        disabled
+
             required
-            id="firstName"
+            id="lastName"
             type="text"
             placeholder="Last name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
         />
+          <label>Email</label>
+
         <input 
+        disabled
+
             required
             id="email"
             type="email"

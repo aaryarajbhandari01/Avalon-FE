@@ -3,6 +3,14 @@
     display: flex;
   }
 
+  .profile-title {
+    padding: 15px;
+    margin: 10px;
+  }
+  .profile-title h2{
+    font-weight: 300;
+    text-transform: uppercase;
+  }
 .profilecontainer  .grid-filter-column{
     grid-template-columns: 0.5fr 1fr;
   }
@@ -12,7 +20,7 @@
     height: 100%;
     /* top: 10px; */
     top: 110px;
-    background-color: azure;
+    /* background-color: azure; */
   }
 .profilecontainer  .left .filterItem {
     margin-bottom: 30px;
@@ -38,7 +46,21 @@
     margin-bottom: 50px;
   }
 
+  .profilecontainer h3{
+    font-weight: 300;
+text-transform: uppercase;
+  }
+  .profilecontainer form{
+    padding: 20px;
+  }
   .profilecontainer input{
     padding: 7px;
     margin: 5px;
+    margin-bottom: 20px;
+  }
+
+  .profilecontainer label{
+    font-size: medium;
+    font-weight: 300;
+
   }

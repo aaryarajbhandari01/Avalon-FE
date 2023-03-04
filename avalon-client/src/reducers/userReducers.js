@@ -13,6 +13,9 @@ import {
     USER_DETAILS_SUCCESS,
     USER_DETAILS_FAIL,
 
+    // USER_REVIEW_REQUEST,
+    // USER_REVIEW_SUCCESS,
+    // USER_REVIEW_FAIL
  } from '../constants/UserConstants'
 
 
@@ -50,6 +53,7 @@ import {
                 return { loading: true }
     
             case USER_REGISTER_SUCCESS:
+
             //loading data sucessfull
                 return { loading: false, userInfo: action.payload}
             
@@ -93,3 +97,28 @@ import {
     
     }
 
+// port const userReviewReducers =(state={user:{}} ,action)=>{
+    
+//         switch(action.type){
+//             case USER_REVIEW_REQUEST: 
+//             //returning user object , empty array as we're loading data
+//                 return {...state, loading: true }
+    
+//             case USER_REVIEW_SUCCESS:
+//             //loading data sucessfull
+//                 return { loading: false, user: action.payload}
+            
+//             case USER_REVIEW_FAIL:
+//              // error attribute and response from payload
+//                 return { loading:false, error: action.payload }
+    
+        
+
+//             default:
+//                 return state
+//         }
+    
+    
+    
+//     }
+    // ex

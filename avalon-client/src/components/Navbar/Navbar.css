@@ -7,6 +7,15 @@
     
 }
 
+.navbar .username , .login{
+text-decoration: none;
+font-weight: 200;
+padding: 2px;
+}
+
+.navbar a {
+    text-decoration: none;
+ }
 .navbar .wrapper {
     padding: 15px 30px;
     display: flex;

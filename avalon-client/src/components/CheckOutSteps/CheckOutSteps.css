@@ -1,0 +1,17 @@
+.checkoutstepsContainer {
+    /* background-color: rgb(231, 243, 229); */
+    padding: 10px;
+    margin-top: 50px;
+    margin-left: 150px;
+    margin-right: 150px;
+    padding-left: 80px;
+    padding-right: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+}
+
+.checkoutstepsContainer .steps{
+    padding: 10px;
+    color: gray;
+}

@@ -20,6 +20,30 @@ const getLocalCartData = () => {
     }
 };
 
+// const getLocalShippingData = () => {
+//     let localShippingData = localStorage.getItem("shippingAddress");
+//     // if(localCartData === []){
+//     if(localShippingData !== {}){
+//         return {};
+//     } else { //if not empty
+//         return JSON.parse(localShippingData); // complete array data (parsing to original)
+//     }
+// };
+
+// const getLocalShippingData = () => {
+//     let localShippingData = localStorage.getItem("shippingAddress");
+//     if (localShippingData === null || localShippingData === undefined || localShippingData === "{}") {
+//       return {};
+//     } else {
+//       return JSON.parse(localShippingData);
+//     }
+//   };
+
+const getLocalShippingData = () => {
+    const localShippingData = localStorage.getItem("shippingAddress");
+    return localShippingData ? JSON.parse(localShippingData) : {};
+  };
+
 //defining initialState Object
 const initialState = {
     // cart : [],
@@ -28,6 +52,8 @@ const initialState = {
     total_price:"", //for cart
     shipping_fee: 100,
     coupon_code:"",
+    // shipping_address:{},
+    shipping_address: getLocalShippingData(),
 
 }
 
@@ -89,16 +115,39 @@ const CartProvider = ({children}) => {
 
     // //add data in localStorage
     //set
+
+    
+
+
+
+const saveShippingAddress = (address) => {
+    dispatch({
+      type: "SAVE_SHIPPING_ADDRESS",
+      payload: address,
+    });
+    const updatedAddress = { ...state.shipping_address, ...address };
+    localStorage.setItem("shippingAddress", JSON.stringify(updatedAddress));
+  };
+  
+  
+
     useEffect(()=>{
         // dispatch({type:"CART_TOTAL_ITEM"}); //reduce method to find total cart quantity
         // dispatch({type:"CART_TOTAL_PRICE"}); // for order total price
         dispatch({type:"CART_TOTAL_PRICE_ITEM"});
         localStorage.setItem("avalonCart", JSON.stringify(state.cart)) //key (avalonCart), and converting to string (jsonstringify) and value (initialState cart)
+        
+        // dispatch({
+        //     type: "SAVE_SHIPPING_ADDRESS"
+        //   });
+        // localStorage.setItem("shippingAddress", JSON.stringify(state.shipping_address));
+   
     }, 
     [state.cart] //new added item will be added in localStorage cart
+    // [state.shipping_address]
     );
 
-    return <CartContext.Provider value={{...state, addToCart, removeItem, clearCart,setDecrease, setIncrease }}>
+    return <CartContext.Provider value={{...state, addToCart, removeItem, clearCart,setDecrease, setIncrease, saveShippingAddress }}>
         {children}
     </CartContext.Provider>
 };

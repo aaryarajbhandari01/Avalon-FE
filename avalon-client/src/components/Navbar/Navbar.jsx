@@ -3,6 +3,8 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchIcon from '@mui/icons-material/Search';
+import LogoutIcon from '@mui/icons-material/Logout';
+import LoginIcon from '@mui/icons-material/Login';
 import { Link } from "react-router-dom";
 import "./Navbar.css"
 import { useCartContext } from "../../context/cartContext";
@@ -91,18 +93,23 @@ const Navbar = () => {
 
             {userInfo ? (
               <>
-              <div title={userInfo.first_name} id='username' >
+              {/* <div title={userInfo.first_name} id='username' > */}
+              <div title="Profile" id='username' >
                 <Link to='/profile' className="icons">
                 <PersonOutlineIcon/>
+                <span title={userInfo.first_name} className="username">Hi! {userInfo.first_name} </span>
                 </Link>
 
               </div>
-                <div onClick={logoutHandler}>Logout</div>
+                <div  title="Logout" onClick={logoutHandler}><LogoutIcon/></div>
                 </>
 
             ) : (
               <div className="item">
-              <Link className ="link" to="/login">Login</Link>
+
+              <Link className ="link login" to="/login" >Login</Link>
+              {/* <LoginIcon/> */}
+
             </div>
             )}
 

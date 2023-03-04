@@ -208,7 +208,18 @@ const cartReducer = (state, action) => {
     }
  }
 
+ 
+  //shipping
+  if(action.type === "SAVE_SHIPPING_ADDRESS"){
+
+    return{
+      ...state,
+      shipping_address:action.payload //form data that we are sending
+    }
+  }
+
   return state;
+
 
 }
 

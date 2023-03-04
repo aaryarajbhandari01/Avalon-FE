@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useProductContext } from '../../context/productContext'
 import "./SingleProduct.css"
@@ -7,6 +7,7 @@ import AddToCart from '../../components/AddToCart/AddToCart';
 import Images from '../../components/Images/Images';
 import Review from '../../components/Reviews/review';
 import ReviewForm from '../../components/Reviews/reviewForm';
+import axios from 'axios';
 
 const API = "http://127.0.0.1:8000/api/product"
 
@@ -15,9 +16,13 @@ const SingleProduct = () => {
   const{getSingleProduct, isSingleLoading, singleProduct} = useProductContext();
   console.log("File: SingleProduct.js singleProduct:" ,singleProduct);
 
+
   const {id} = useParams();
   console.log("File: SingleProduct.js single product id :" ,id);
   
+  const [reviews, setReviews] = useState([]);
+
+
    //destructuring single product details data
     const  { 
       id: alias,
@@ -40,6 +45,36 @@ const SingleProduct = () => {
     window.scrollTo(0, 0)
   }, [])
 
+
+  // const authToken = localStorage.getItem("authToken");
+
+  // const addReview = async (data, authToken) => {
+  //   try {
+  //     const response = await axios.post(
+  //       "http://127.0.0.1:8000/api/product/review/create/",
+  //       data,
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${authToken}`,
+  //         },
+  //       }
+  //     );
+  //     return response.data;
+  //   } catch (error) {
+  //     console.error(error);
+  //     throw error;
+  //   }
+  // };
+
+  // const handleReviewSubmit = async (data) => {
+  //   try {
+  //     const newReview = await addReview(data, authToken);
+  //     setReviews([...reviews, newReview]);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
   if(isSingleLoading){
         return  <div className='page_loading'>
           Loading.....
@@ -58,26 +93,7 @@ const SingleProduct = () => {
         <div>
             <div className='center'>
               {/* PRODUCT IMAGE */}
-            {/* <div className="images"> */}
-              {/* <img src={product.img} alt="" onClick={() => handleImageClick(product.img)}/> */}
-              {/* <img src={product.img2} alt="" onClick={() => handleImageClick(product.img2)}/> */}
-              {/* <img src={images[1]} alt="" onClick={e=>setSelectedImg(1)}/> */}
-              {/* <img src={image} alt={name}/> */}
-            {/* </div> */}
-
-          
-            {/* <div className="mainImg"> */}
-              {/* <img src={product.img} alt=""/> */}
-              {/* <img src={selectedImg} alt=""/> */}
-
-
-
-            {/* {selectedImg && (
-              <img src={product.selectedImg} alt=""/>
-              )} */}
-            {/* </div> */}
-          
-          {/* </div> */} 
+           
             <div className="left">
                 {/* PRODUCT IMAGE */}
                 <Images imgs={images}   />
@@ -111,43 +127,7 @@ const SingleProduct = () => {
                 <AddToCart 
                   product={singleProduct} //passing product as singleProduct in add to cart
                 />}
-             
                     
-            {/* <FilterContainer>
-                <Filter>
-                  <FilterTitle>Color</FilterTitle>
-                  <FilterColor color="black" />
-                  <FilterColor color="darkblue" />
-                  <FilterColor color="gray" />
-                </Filter>
-                <Filter>
-                  <FilterTitle>Size</FilterTitle>
-                  <FilterSize>
-                    <FilterSizeOption>XS</FilterSizeOption>
-                    <FilterSizeOption>S</FilterSizeOption>
-                    <FilterSizeOption>M</FilterSizeOption>
-                    <FilterSizeOption>L</FilterSizeOption>
-                    <FilterSizeOption>XL</FilterSizeOption>
-                  </FilterSize>
-                </Filter>
-              </FilterContainer>
-
-                <div className='cartQty'>
-                  <div className='quantity'> */}
-                    {/* <button onClick={()=>setQuantity(prev=>prev-1)}>-</button> */}
-                    {/* <button onClick={()=>setQuantity((prev) => prev ===1 ? 1 : prev - 1)}>-</button>
-                    <div className='qty'>
-                      {quantity}
-                    </div>
-                    <button onClick={()=>setQuantity(prev => prev + 1)}>+</button>
-                  </div>
-
-                  <button className="add" onClick={() => addToCart({ id: id})}> 
-                    <AddShoppingCartOutlined/> 
-                    Add To Cart 
-                  </button>
-                </div>  */}
-          
               </div>
 
               
@@ -158,6 +138,7 @@ const SingleProduct = () => {
           <div className='bottom'>
              <h3> Review</h3>
              <ReviewForm/>
+             {/* <ReviewForm productId={id} onSubmit={handleReviewSubmit} /> */}
              <hr/>
             
             <div class="main_reviews-container">

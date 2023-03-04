@@ -21,6 +21,7 @@ import Checkout from './pages/Checkout/Checkout';
 import {Home, Cart, CartPage, CategoryProducts, SingleProduct, Products} from "../src/pages/index"
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import Profile from './pages/Profile/Profile';
+import Shipping from './pages/Shipping/Shipping';
 
 
 
@@ -73,14 +74,18 @@ const router = createBrowserRouter([
          path: "/singleproduct/:id", //product detail single page
         element: <SingleProduct/>,
       },
-      {
-        path: "/checkout", 
-       element: <Checkout/>,
-     },
+    //   {
+    //     path: "/checkout", 
+    //    element: <Checkout/>,
+    //  },
      {
       path: "/shipping", 
-     element: <Home/>,
+     element: <Shipping/>,
    },
+   {
+    path: "/payment", 
+   element: <Home/>,
+ },
     {
       path: "/profile", 
      element: <Profile/>,

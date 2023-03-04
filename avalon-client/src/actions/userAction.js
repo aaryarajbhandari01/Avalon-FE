@@ -10,9 +10,15 @@ import {
     USER_REGISTER_SUCCESS,
     USER_REGISTER_FAIL,
 
-      USER_DETAILS_REQUEST,
+    USER_DETAILS_REQUEST,
     USER_DETAILS_SUCCESS,
     USER_DETAILS_FAIL,
+
+    USER_REVIEW_REQUEST,
+    USER_REVIEW_SUCCESS,
+    USER_REVIEW_FAIL,
+
+    CART_SAVE_SHIPPING_ADDRESS,
  } from '../constants/UserConstants'
 
 
@@ -48,9 +54,11 @@ import {
 
         //setting in   state and local storage
         localStorage.setItem('userInfo', JSON.stringify(data) )
+        // localStorage.setItem('isLoggedIn', true); // Set isLoggedIn to true
 
-        
-
+        // if (localStorage.getItem('isLoggedIn') === 'true') { // Check if isLoggedIn is true
+        //   window.location = '/products'; // Redirect to products page
+        // }
       
 
     }catch(error){
@@ -182,3 +190,70 @@ import {
             })
     }
  }
+
+
+
+//  export const saveShippingAddress = (data) => (dispatch ) =>{
+//     dispatch({
+//         type: CART_SAVE_SHIPPING_ADDRESS,
+//         payload: data,
+//     })
+
+//     localStorage.setItem('shippingAddress', JSON.stringify(data))
+//  }
+
+
+// export const addReview = (productId, review) => async (dispatch, getState) => {
+//     try{
+//         dispatch({
+//             type: USER_REVIEW_REQUEST
+//         })
+
+//         const {
+//             userLogin: {userInfo},
+//         } =getState()
+
+//         //configurations
+//         const config ={
+//             headers: {
+//                 'Content-type' : 'application/json',
+//                 Authorization: `Bearer ${userInfo.token}` //for authorization and access to details
+//             },
+
+//             body: JSON.stringify({product: productId, review})
+//         }
+
+//         // MAKING API CALL
+//         const {data} = await axios.post(
+//             'http://127.0.0.1:8000/api/product/review/create/',
+//             // { username: username, 
+//             //     password: password, 
+//             //     id:id },
+//             config
+
+//             )//destructuring response and post to get user tokens
+
+
+//         //sending paylOad to reducer
+
+//         dispatch({
+//             type: USER_REVIEW_SUCCESS,
+//             payload: data
+//         })
+
+       
+
+       
+       
+        
+      
+
+//     }catch(error){
+//             dispatch({
+//                 type:USER_REVIEW_FAIL,
+//                 payload:error.response && error.response.data.detail
+//                 ? error.response.data.detail
+//                 :error.message,
+//             })
+//     }
+//  }
