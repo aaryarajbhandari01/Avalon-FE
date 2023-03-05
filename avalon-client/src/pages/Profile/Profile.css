@@ -4,12 +4,26 @@
   }
 
   .profile-title {
+
     padding: 15px;
     margin: 10px;
+    padding-bottom: 0px;
+    color: rgb(113, 111, 111);
+
   }
+
+  .profilecontainer .icon{
+    font-size: 30px;
+    color: gray;
+    /* padding: 10px; */
+  }
+
   .profile-title h2{
+    padding: 10px;
+    margin-left: 10px;
     font-weight: 300;
-    text-transform: uppercase;
+    color: rgb(89, 137, 128);
+    text-transform: capitalize;
   }
 .profilecontainer  .grid-filter-column{
     grid-template-columns: 0.5fr 1fr;
@@ -17,6 +31,7 @@
 .profilecontainer  .left {
     flex: 1;
     position: sticky;
+    
     height: 100%;
     /* top: 10px; */
     top: 110px;
@@ -25,16 +40,17 @@
 .profilecontainer  .left .filterItem {
     margin-bottom: 30px;
   }
-.profilecontainer  .left .filterItem h3 {
-    font-weight: 400;
-    margin-bottom: 20px;
+.profilecontainer  .left  h3 {
+  display: flex;
+    justify-content: space-around;
+    /* margin-bottom: 20px; */
   }
-.profilecontainer  .left .filterItem .inputItem {
+/* .profilecontainer  .left .filterItem .inputItem {
     margin-bottom: 10px;
   }
 .profilecontainer  .left .filterItem .inputItem label {
     margin-left: 10px;
-  }
+  } */
 .profilecontainer  .right {
     background-color: azure;
     flex: 3;
@@ -52,15 +68,17 @@ text-transform: uppercase;
   }
   .profilecontainer form{
     padding: 20px;
+    margin: 10px;
   }
   .profilecontainer input{
     padding: 7px;
     margin: 5px;
     margin-bottom: 20px;
+    font-size: smaller;
   }
 
   .profilecontainer label{
-    font-size: medium;
+    font-size: small;
     font-weight: 300;
 
   }

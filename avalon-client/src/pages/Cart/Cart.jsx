@@ -1,21 +1,55 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import "./Cart.css"
 import CartItem from '../../components/CartItem/CartItem'
 import { useCartContext } from '../../context/cartContext'
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios'
 
 
 const Cart = () => {
 
   const {total_item, cart, clearCart, shipping_fee, total_price} = useCartContext();
   console.log("file: Cart.js ~ cart", cart);
+ 
+   //for coupon
+   const [couponCode, setCouponCode] = useState('');
+   const [couponError, setCouponError] = useState('');
+   const [discountPercent, setDiscountPercent] = useState(0);
+ 
 
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  // const applyCouponHandler = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const config = {
+  //       headers: {
+  //         Authorization: `Bearer ${userInfo.token}`,
+  //         'Content-Type': 'application/json',
+  //       },
+  //     };
+  //     const { data } = await axios.post(
+  //       'http://127.0.0.1:8000/api/order/coupon-check/',
+  //       { code: couponCode },
+  //       config
+  //     );
+  //     setDiscount(data.discount_percent);
+  //     setCouponError('');
+  //   } catch (error) {
+  //     setCouponError(
+  //       error.response && error.response.data.detail
+  //         ? error.response.data.detail
+  //         : 'Something went wrong'
+  //     );
+  //     setDiscount(0);
+  //   }
+  // };
  
 
   //navigating checking is user is logged in and then navigating the user to shipping
@@ -33,6 +67,51 @@ const Cart = () => {
       clearCart();
     }
   }
+
+  const applyCoupon = async () => {
+
+    if (couponCode.trim() === '') {
+      setCouponError('Coupon code cannot be empty');
+      return;
+    }
+  
+    if (!userInfo) {
+      setCouponError('Please log in to apply coupon');
+      return;
+    }
+
+    
+    try {
+      const response = await axios.post(
+        'http://127.0.0.1:8000/api/order/coupon-check/',
+
+        { code: couponCode,
+        discount_percent: discountPercent },
+        {
+          headers: {
+            Authorization: `Bearer ${userInfo.token}`,
+          },
+        }
+      );
+      console.log(couponCode);
+      console.log(discountPercent);
+
+      //removing error if no error
+      setCouponError(null);
+
+      // Assuming the API responds with the discounted total price
+       // Assuming the API responds with the discounted total price and discount percentage
+      //  setDiscountAmount(response.data.discount_amount);
+       setDiscountPercent(response.data.discount_percent);
+      // dispatch({ type: "APPLY_COUPON", payload: response.data });
+    } catch (error) {
+      console.log(error);
+      // Display an error message to the user
+      setCouponError('An error occurred while applying the coupon. Please try again later.');
+    }
+  };
+
+
 
   if (cart.length === 0){
     return  <section  className='cart'>
@@ -101,7 +180,22 @@ const Cart = () => {
         {/* <hr /> */}
         
         <div className="cart-two-button">
-          <button>Apply Promo</button>
+          
+          <div className='couponCode'>
+             <input
+              type="text"
+              id='code'
+              value={couponCode}
+              onChange={(e) => setCouponCode(e.target.value)}
+              placeholder="Enter coupon code"
+            />
+         
+            <button type='submit' onClick={applyCoupon}>Apply</button>
+            {couponError && (
+  <div className="error-message">{couponError}</div>
+)}
+          </div>
+          
           <button 
             className="btn btn-clear" 
             // onClick={clearCart}
@@ -114,6 +208,7 @@ const Cart = () => {
            {/* order total_amount */}
         <div className="order-total--amount">
           <div className="order-total--subdata">
+            <h3>Order Summary</h3>
             <div>
               <p>subtotal:</p>
               <p>
@@ -129,14 +224,16 @@ const Cart = () => {
             <div>
               <p>discount:</p>
               <p>
-             - NRs.{shipping_fee}
+             - NRs. {discountPercent*total_price/100}
+              
+             {/* - {discountPercent} % */}
               </p>
             </div>
             <hr />
             <div>
               <p>order total:</p>
               <p>
-              NRs{shipping_fee + total_price}
+              NRs. {shipping_fee + total_price - ((discountPercent * total_price/100))}
               </p>
             </div>
 

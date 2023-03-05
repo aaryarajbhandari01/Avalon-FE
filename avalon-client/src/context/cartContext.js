@@ -51,7 +51,7 @@ const initialState = {
     total_item: "", //total cart item
     total_price:"", //for cart
     shipping_fee: 100,
-    coupon_code:"",
+    coupon_code: "",
     // shipping_address:{},
     shipping_address: getLocalShippingData(),
 

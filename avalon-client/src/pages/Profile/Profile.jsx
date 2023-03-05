@@ -4,6 +4,9 @@ import "./Profile.css"
 import axios from "axios";
 import { getUserDetails } from '../../actions/userAction'
 import { useDispatch, useSelector } from "react-redux";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
+
 
 const Profile = ({history}) => {
 
@@ -74,14 +77,14 @@ console.log('profile updating')    }
   return (
     <>
     <div className="profile-title">
-    <h2>My Profile</h2>
+      <h2> My Profile</h2>
     </div>
     <div className="profilecontainer">
       
     <div className="grid grid-filter-column">
 
         <div className="left">
-        <h3>User Profile</h3>
+        <h3> <span> <AccountCircleIcon className="icon"/> </span> </h3>
         {/* <p>test user</p> */}
         {error && <p>{error}</p>}
 
@@ -89,6 +92,7 @@ console.log('profile updating')    }
         className="form-group" 
         onSubmit={handleRegister}
         >
+          <div className="form-input">
           <label>Username</label>
         <input 
         disabled
@@ -99,6 +103,7 @@ console.log('profile updating')    }
             value={username}
             onChange={(e) => setUsername(e.target.value)}
         />
+        </div>
         
         {/* <input 
             required
@@ -116,20 +121,24 @@ console.log('profile updating')    }
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
         /> */}
+
+          <div  className="form-input">
+
           <label>First Name</label>
 
-        <input 
-        disabled
+          <input 
+          disabled
 
-            required
-            id="firstName"
-            type="text"
-            placeholder="First name"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-        />
-          <label>Last Name</label>
+              required
+              id="firstName"
+              type="text"
+              placeholder="First name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+          />
+        </div>
 
+        <label>Last Name</label>
         <input 
         disabled
 

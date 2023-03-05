@@ -208,6 +208,18 @@ const cartReducer = (state, action) => {
     }
  }
 
+ //coupon
+ if(action.type === "APPLY_COUPON" ) {
+  const discountAmount = action.payload.discount_amount;
+  const discountedPrice = state.total_price - discountAmount;
+  return {
+    ...state,
+    discountAmount,
+    total_price: discountedPrice,
+  };
+     
+
+}
  
   //shipping
   if(action.type === "SAVE_SHIPPING_ADDRESS"){
@@ -221,6 +233,8 @@ const cartReducer = (state, action) => {
   return state;
 
 
-}
+};
+
+
 
 export default cartReducer;

@@ -17,6 +17,10 @@
     align-items: center;
     border-radius: 10px;
     justify-content: center;
+
+    background: #fff;
+border-radius: 5px;
+box-shadow: 5px 5px 30px rgba(0,0,0,0.2);
 }
 .register-wrapper .title{
   display: flex;
@@ -33,6 +37,7 @@ text-transform: uppercase;
 .register-container form{
     display: flex;
     flex-direction: column;
+    margin: 20px;
 }
 .register-container .form-group{
 padding: 20px;
@@ -63,7 +68,7 @@ align-items: center;
 }
 
 .register-container .register-btn{
-padding: 10px;
+padding: 12px;
 margin: 15px;
 
 }
@@ -81,12 +86,13 @@ padding-top: 10px;
 
 .register-container .register-wrapper p span{
     color: rgb(27, 88, 54);
-    font-size: small;
+    font-size: 14px;
     font-weight: 400;
 
 }
 
-p .aggrement{ 
-font-size: 12px;
+.register-container
+ .aggrement i{ 
+font-size: 8px;
 margin: 20px 0px;
 }

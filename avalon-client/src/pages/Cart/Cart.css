@@ -415,29 +415,70 @@ align-items: center;
 }
 
 .cart  .order-total--amount .order-total--subdata {
-    border: 0.1rem solid #f0f0f0;
+    /* border: 0.1rem solid #f0f0f0; */
     display: flex;
     flex-direction: column;
     gap: 1.8rem;
     padding: 3.2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    
+  }
+
+  .order-total--subdata h3{
+    font-weight: 300;
+    text-transform: uppercase;
   }
 .cart  .order-total--amount  div {
     display: flex;
     gap: 3.2rem;
     justify-content: space-between;
+    color: rgb(129, 131, 130);
+    font-weight: 300;
   }
+
+
 .cart  .order-total--amount  div:last-child {
     background-color: #fafafa; 
   }
 .cart  .order-total--amount  div p:last-child {
-    font-weight: bold;
+    font-weight: 300;
     color:rgb(118, 158, 118);
   }
 
 
   .cart .checkout-btn{
 padding: 10px;
-color: rgb(27, 80, 62);
-background-color: white;
+background-color: rgb(27, 34, 32);
+color: white;
 border-width: 1px;
+  }
+
+  .cart .couponCode{
+    padding: 10px;
+    gap:1rem;
+  }
+
+  .cart .couponCode input{
+    padding: 8px;
+    margin-right: 8px;
+  }
+
+  .cart .couponCode button{
+background-color: rgb(154, 183, 171);
+color: #f4f6f6;
+padding: 5px;
+width: 90px;
+font-weight: 300;
+border-radius: 2px;
+text-transform: uppercase;
+  }
+
+  
+  .cart .couponCode .error-message{
+    color: red;
+    font-weight: 200;
+    font-size: small;
+    padding: 7px;
   }

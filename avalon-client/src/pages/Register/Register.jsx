@@ -118,9 +118,9 @@ const Register = ({location, history}) => {
          />
             {message && <p className="form-error"> {message} </p>}
     
-            <p className="agreement">
+            <p className="agreement"><i>
             By creating an account, I consent to the processing of my personal
-            data in accordance with the <b>PRIVACY POLICY</b>
+            data in accordance with the <b>PRIVACY POLICY</b></i>
           </p>
           <button 
             type="submit" 

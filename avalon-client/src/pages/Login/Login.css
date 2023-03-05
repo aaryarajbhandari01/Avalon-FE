@@ -4,15 +4,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+
+
 }
 
 .login-wrapper{
     width: 20%;
+    /* height: 60%; */
     padding: 20px;
-    background-color: rgb(242, 242, 242);
+    /* background-color: rgb(242, 242, 242); */
     align-items: center;
     border-radius: 10px;
     justify-content: center;
+    background-color: #ecedec;
+
+background: #fff;
+border-radius: 5px;
+box-shadow: 5px 5px 30px rgba(0,0,0,0.2);
 }
 .login-wrapper .title{
   display: flex;
@@ -27,6 +36,8 @@ text-transform: uppercase;
 }
 
 .login-container form{
+    margin-bottom: 20px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
 }
@@ -43,7 +54,7 @@ align-items: center;
     width: 90%;
     margin-bottom: 10px;
     padding: 10px;
-    margin-top: 0;
+    margin-top: 5;
 }
 
 .login-container button{
@@ -54,12 +65,13 @@ align-items: center;
     color: white;
     cursor: pointer;
     margin-bottom: 10px;
+    
 }
 
 .login-container .login-btn{
-padding: 10px;
+padding: 15px;
 margin: 15px;
-
+margin-bottom: 20px;
 }
 .login-container .login-wrapper p{
 font-size: smaller;
