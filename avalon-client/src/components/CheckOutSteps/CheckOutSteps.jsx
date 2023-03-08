@@ -26,7 +26,7 @@ function CheckOutSteps({step1, step2, step3, step4}) {
             )}
         </Nav.Item>
 
-        <div class="connect"></div>
+        <div className="connect"></div>
 
         <Nav.Item className='steps'>
             {step2 ? (
@@ -41,7 +41,7 @@ function CheckOutSteps({step1, step2, step3, step4}) {
             )}
         </Nav.Item>
 
-        <div class="connect"></div>
+        <div className="connect"></div>
 
 
         <Nav.Item className='steps'>

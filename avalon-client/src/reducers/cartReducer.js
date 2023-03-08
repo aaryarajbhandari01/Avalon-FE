@@ -230,6 +230,14 @@ const cartReducer = (state, action) => {
     }
   }
 
+  //payment
+  if(action.type === "SAVE_PAYMENT_METHOD"){
+    return{
+      ...state,
+      payment_method :action.payload //form data that we are sending
+    }
+  }
+
   return state;
 
 

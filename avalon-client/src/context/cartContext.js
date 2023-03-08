@@ -44,6 +44,11 @@ const getLocalShippingData = () => {
     return localShippingData ? JSON.parse(localShippingData) : {};
   };
 
+  const getLocalPaymentData = () => {
+    const localShippingData = localStorage.getItem("paymentMethod");
+    return localShippingData ? JSON.parse(localShippingData) : {};
+  };
+
 //defining initialState Object
 const initialState = {
     // cart : [],
@@ -54,6 +59,7 @@ const initialState = {
     coupon_code: "",
     // shipping_address:{},
     shipping_address: getLocalShippingData(),
+    payment_method: getLocalPaymentData(),
 
 }
 
@@ -128,6 +134,17 @@ const saveShippingAddress = (address) => {
     const updatedAddress = { ...state.shipping_address, ...address };
     localStorage.setItem("shippingAddress", JSON.stringify(updatedAddress));
   };
+
+  const savePaymentMethod = (data) => {
+    dispatch({
+      type: "SAVE_PAYMENT_METHOD",
+      payload: data,
+    });
+
+    const updatedData = { ...state.payment_method, ...data };
+
+    localStorage.setItem("paymentMethod", JSON.stringify(updatedData));
+  };
   
   
 
@@ -147,7 +164,7 @@ const saveShippingAddress = (address) => {
     // [state.shipping_address]
     );
 
-    return <CartContext.Provider value={{...state, addToCart, removeItem, clearCart,setDecrease, setIncrease, saveShippingAddress }}>
+    return <CartContext.Provider value={{...state, addToCart, removeItem, clearCart,setDecrease, setIncrease, saveShippingAddress, savePaymentMethod }}>
         {children}
     </CartContext.Provider>
 };

@@ -23,6 +23,7 @@ import ErrorPage from './pages/ErrorPage/ErrorPage';
 import Profile from './pages/Profile/Profile';
 import Shipping from './pages/Shipping/Shipping';
 import Payment from './pages/Payment/Payment';
+import PlaceOrder from './pages/PlaceOrder/PlaceOrder';
 
 
 
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
       path: "/shipping", 
      element: <Shipping/>,
    },
+   {
+    path: "/placeorder", 
+   element: <PlaceOrder/>,
+ },
    {
     path: "/payment", 
    element: <Payment/>,

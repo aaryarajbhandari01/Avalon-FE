@@ -7,22 +7,22 @@ import './Payment.css'
 
 function Payment( {history}) {
 
-    // const {savePaymentMethod } = useCartContext();
+    const {savePaymentMethod } = useCartContext();
     const {saveShippingAddress } = useCartContext();
 
-    const [paymentMethod, setPaymentMethod] = useState('Khalti')
+    const [paymentMethod, setPaymentMethod] = useState(null);
 
 const navigate = useNavigate()
 
 
-    if(!saveShippingAddress.address) {
-        navigate('/shipping')
-    }
+    // if(!saveShippingAddress.address) {
+    //     navigate('/shipping')
+    // }
 
     const submitHandler =(e) => {
         e.preventDefault()
-        console.log('submit')
-        // saveShippingAddress({paymentMethod});
+        console.log('submit payment')
+        savePaymentMethod({paymentMethod});
         navigate('/placeorder');
        }
 
@@ -44,11 +44,15 @@ const navigate = useNavigate()
                 id="khalti"
                 type="radio"
                 label="Khalti"
-                name="paymentMethod" 
+                // name="paymentMethod" 
+                name="paymentMethodKhalti" 
+
+                checked={paymentMethod === 'Khalti'}
                 // value={address ? address : ""}
+                value="Khalti"
                 onChange={(e) => setPaymentMethod(e.target.value)}
             /> 
-            <label>Khalti</label>
+            <label  htmlFor="khalti" >Khalti</label>
             </div>
 
             <div className='inputGroup'>
@@ -56,12 +60,13 @@ const navigate = useNavigate()
                 id="cod"
                 type="radio"
                 label="Cash On Delivery"
-                name="paymentMethod" 
-                checked
+                name="paymentMethodCOD" 
                 // value={address ? address : ""}
+                value="CashOnDelivery"
+                checked={paymentMethod === 'CashOnDelivery'}
                 onChange={(e) => setPaymentMethod(e.target.value)}
             />
-            <label>Cash On Delivery</label>
+            <label htmlFor="cod" >Cash On Delivery</label>
             </div>
             </div>
 
