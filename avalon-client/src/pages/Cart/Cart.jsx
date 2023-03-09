@@ -25,31 +25,6 @@ const Cart = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  // const applyCouponHandler = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const config = {
-  //       headers: {
-  //         Authorization: `Bearer ${userInfo.token}`,
-  //         'Content-Type': 'application/json',
-  //       },
-  //     };
-  //     const { data } = await axios.post(
-  //       'http://127.0.0.1:8000/api/order/coupon-check/',
-  //       { code: couponCode },
-  //       config
-  //     );
-  //     setDiscount(data.discount_percent);
-  //     setCouponError('');
-  //   } catch (error) {
-  //     setCouponError(
-  //       error.response && error.response.data.detail
-  //         ? error.response.data.detail
-  //         : 'Something went wrong'
-  //     );
-  //     setDiscount(0);
-  //   }
-  // };
  
 
   //navigating checking is user is logged in and then navigating the user to shipping

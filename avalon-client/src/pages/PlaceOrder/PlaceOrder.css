@@ -1,4 +1,125 @@
-.orderImage{
-    width: 50px;
-    height: 50px;
+
+  
+.placeOrderContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+    /* background-color: #e7eceb; */
+    max-width: 40rem;
+    /* padding: 10vw 2rem 0; */
+    margin: 0 auto;
+    height: auto;
+
+  }
+
+  .placeOrderContainer .placeOrderWrapper{
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    margin: 10px;
+    background-color: #ecedec;
+    
+    /* display: inline-flex; */
+    background: #fff;
+    height: 80%;
+    width: 100%;
+    /* align-items: center; */
+    /* justify-content: space-evenly; */
+    border-radius: 5px;
+    /* padding: 20px 15px; */
+    box-shadow: 5px 5px 30px rgba(0,0,0,0.2);
+    
+      }
+
+.placeOrderCol{
+/* background-color: aqua; */
+/* gap: 1rem; */
+align-items: center;
+justify-content: center;
 }
+
+.placeOrderCol .placeOrderGroup{
+    padding: 10px;
+align-items: center;
+background-color: #fff;
+justify-content: center;
+width: 95%;
+}
+
+.placeOrderItem{
+/* background-color: antiquewhite; */
+width: 100%;
+padding: 10px;
+margin: 10px;
+}
+
+
+
+.placeOrderItem h2{
+    margin-bottom: 20px;
+    font-size: larger;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.placeOrderItem p{
+display: flex;
+gap: 1rem;
+font-weight: 200;
+text-transform: capitalize;
+}
+
+.placeOrderItem p strong{
+text-transform: capitalize;
+font-weight: 300;
+
+}
+
+.placeOrderGroup .orderRow{
+    display: flex; 
+    gap: 1rem;
+    align-items: center;
+    margin-bottom:5px ;
+}
+
+.placeOrderGroup .orderImage{
+    width: 50px;
+    /* height: 50px; */
+}
+
+.placeOrderItem .placeOrderCartItem{
+padding-left: 10px;
+}
+
+.placeOrderItem h3{
+text-transform: uppercase;
+font-weight: 300;
+}
+.placeOrderSummary .summaryGrp{
+margin: 20px;
+padding-right: 20px;
+}
+
+.placeOrderSummary .summaryGrp .orderColTitle{
+text-transform: uppercase;
+
+}
+.placeOrderSummary .placeOrderGroup .orderRow{
+    display: flex; 
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:5px ;
+    font-weight: 200;
+}
+
+.placeOrderSummary button{
+    width: 95%;
+    padding: 10px;
+    background-color: black;
+    color: #aecbba;
+}
+

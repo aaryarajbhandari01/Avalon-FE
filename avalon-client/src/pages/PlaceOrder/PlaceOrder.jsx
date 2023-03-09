@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
 import CheckOutSteps from '../../components/CheckOutSteps/CheckOutSteps';
 import { useCartContext } from '../../context/cartContext'
 import './PlaceOrder.css'
@@ -18,16 +17,20 @@ function PlaceOrder () {
         window.scrollTo(0,0)
       }, [])
   
+      const placeOrder = () =>{
+        console.log('Place Order')
+      }
       
   return (
     <div>
         <CheckOutSteps step1 step2 step3 step4 />
 
         {/* left side */}
-        <Row>
-            <Col md={8}>
-                <ListGroup variant='flush'>
-                    <ListGroup.Item>
+        <div className='placeOrderContainer'>
+        <div className='placeOrderWrapper'> 
+            <div className='placeOrderCol' >
+                <div className='placeOrderGroup'>
+                    <div className='placeOrderItem'>
                         <h2>Shipping</h2>
 
                         <p>
@@ -36,55 +39,124 @@ function PlaceOrder () {
                             {'   '} <br/>
                             {shipping_address.phone}
                         </p>
-                    </ListGroup.Item>
+                    </div>
 
-                    <ListGroup.Item>
+                    <hr/>
+
+                    <div  className='placeOrderItem'>
                         <h2>Payment Method</h2>
 
                         <p>
                             <strong>Method:</strong>
                             {payment_method.paymentMethod}
                         </p>
-                    </ListGroup.Item>
+                    </div>
 
-                    <ListGroup.Item>
+                    <hr/>
+
+                    <div  className='placeOrderItem'>
                         <h2>Order Items</h2>
+
+                        {/* condition to check if there is items in cart */}
+
                         {cart.length === 0 ? <p className='error'>Cart is empty</p>
                         : (
-                            <ListGroup variant='flush'>
+                            <div className='placeOrderGroup'>
                                 {cart.map((currElem, index) => (
-                                    <ListGroup.Item key={index}>
-                                        <Row>
-                                            <Col>
+                                    <div key={index}>
+                                        <div className='orderRow'>
+                                            <div className='orderCol'>
                                             <img className='orderImage' src={currElem.image}/>
-                                            </Col>
+                                            </div>
 
-                                            <Col>
+                                            <div className='orderCol'>
                                              <Link className='link' to={`/singleproduct/${index}`}>
-                                            
                                                 <p>{currElem.name}</p>
                                             </Link>
-                                            </Col>
-                                        </Row>
-                                    </ListGroup.Item>
+                                            </div>
+
+                                            <div className='orderCol'>
+                                                <p className='placeOrderCartItem'>
+                                                {currElem.amount} x Nrs. {currElem.price}
+                                                </p>
+                                            </div>
+
+                                            <div className='orderCol'>
+                                                <p className='placeOrderCartItem'>
+                                                    = Nrs {(currElem.amount * currElem.price).toFixed(2)}
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 ))}
 
                                   {/* {cart.map((curElem) => {
-            return <CartItem key={curElem.id} {...curElem} />;// passing curElem as props
-          })} */}
-                            </ListGroup>
-                        )}
+                                    return <CartItem key={curElem.id} {...curElem} />;// passing curElem as props
+                                      })} */}
+                            </div>
+                                )}
 
                        
-                    </ListGroup.Item>
+                    </div>
+                    <hr/>
 
-                </ListGroup>
-            </Col>
+                </div>
+            </div>
 
-            <Col md={4}>
-            </Col>
-        </Row>
-        
+            <div className='placeOrderCol' >
+                <div className='placeOrderSummary'>
+                    <div className='placeOrderGroup'>
+                 
+                        <div className='placeOrderItem'>
+                            <h3>Order Summary</h3>
+                        </div>
+                    <div className='summaryGrp'>
+                        <div className='placeOrderItem'>
+                            <div className='orderRow'>
+                                <div className='orderColTitle'>Item</div>
+                                <div className='orderCol'>NRs.{cart.itemsPrice}</div>
+                            </div>
+                        </div>
+
+                        <div className='placeOrderItem'>
+                            <div className='orderRow'>
+                                <div className='orderColTitle'>Shipping Price</div>
+                                <div className='orderCol'>NRs.{cart.shippingPrice}</div>
+                            </div>
+                        </div>
+
+                        <div className='placeOrderItem'>
+                            <div className='orderRow'>
+                                <div className='orderColTitle'>Discount</div>
+                                <div className='orderCol'>- NRs.{cart.discountPrice}</div>
+                            </div>
+                        </div>
+
+                        <div className='placeOrderItem'>
+                            <div className='orderRow'>
+                                <div className='orderColTitle'>Total</div>
+                                <div className='orderCol'>NRs.{cart.totalPrice}</div>
+                            </div>
+                        </div>
+
+                    </div>
+                        <div className='placeOrderItem'>
+                            <div className='orderRow'>
+                            <button type='button'
+                            className='btn-placeOrder'
+                            disabled={cart.length === 0}
+                            onClick={placeOrder}>Place Order</button>
+                            </div>
+                           
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
     </div>
   )
 }
