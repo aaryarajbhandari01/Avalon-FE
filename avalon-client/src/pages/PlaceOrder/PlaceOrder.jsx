@@ -115,28 +115,28 @@ function PlaceOrder () {
                         <div className='placeOrderItem'>
                             <div className='orderRow'>
                                 <div className='orderColTitle'>Item</div>
-                                <div className='orderCol'>NRs.{cart.itemsPrice}</div>
+                                <div className='orderCol'>NRs.{total_price}</div>
                             </div>
                         </div>
 
                         <div className='placeOrderItem'>
                             <div className='orderRow'>
                                 <div className='orderColTitle'>Shipping Price</div>
-                                <div className='orderCol'>NRs.{cart.shippingPrice}</div>
+                                <div className='orderCol'>NRs.{shipping_fee}</div>
                             </div>
                         </div>
 
                         <div className='placeOrderItem'>
                             <div className='orderRow'>
                                 <div className='orderColTitle'>Discount</div>
-                                <div className='orderCol'>- NRs.{cart.discountPrice}</div>
+                                {/* <div className='orderCol'>- NRs. {discountPercent*total_price/100}</div> */}
                             </div>
                         </div>
 
                         <div className='placeOrderItem'>
                             <div className='orderRow'>
                                 <div className='orderColTitle'>Total</div>
-                                <div className='orderCol'>NRs.{cart.totalPrice}</div>
+                                {/* <div className='orderCol'> NRs. {shipping_fee + total_price - ((discountPercent * total_price/100))}</div> */}
                             </div>
                         </div>
 
