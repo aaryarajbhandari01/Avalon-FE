@@ -11,6 +11,9 @@ function PlaceOrder () {
 
     const {total_item, cart, clearCart, shipping_fee, total_price, shipping_address, payment_method} = useCartContext();
  
+// Retrieve the discount percent value from local storage
+// const storedDiscountPercent = localStorage.getItem('discountPercent');
+const discountPercent = localStorage.getItem('discountPercent');
 
 
     useEffect(() => {
@@ -129,14 +132,14 @@ function PlaceOrder () {
                         <div className='placeOrderItem'>
                             <div className='orderRow'>
                                 <div className='orderColTitle'>Discount</div>
-                                {/* <div className='orderCol'>- NRs. {discountPercent*total_price/100}</div> */}
+                                <div className='orderCol'>- NRs. {discountPercent*total_price/100}</div>
                             </div>
                         </div>
 
                         <div className='placeOrderItem'>
                             <div className='orderRow'>
                                 <div className='orderColTitle'>Total</div>
-                                {/* <div className='orderCol'> NRs. {shipping_fee + total_price - ((discountPercent * total_price/100))}</div> */}
+                                <div className='orderCol'> NRs. {shipping_fee + total_price - ((discountPercent * total_price/100))}</div>
                             </div>
                         </div>
 

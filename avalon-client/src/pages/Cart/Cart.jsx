@@ -74,6 +74,9 @@ const Cart = () => {
       //removing error if no error
       setCouponError(null);
 
+      // Store the discount percent in local storage
+    localStorage.setItem('discountPercent', response.data.discount_percent);
+
       // Assuming the API responds with the discounted total price
        // Assuming the API responds with the discounted total price and discount percentage
       //  setDiscountAmount(response.data.discount_amount);
