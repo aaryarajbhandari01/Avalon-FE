@@ -66,25 +66,26 @@ console.log('token is', userInfo.token)
     const placeOrder = async () => {
         // Create the order object
         const orderData = {
-            
-          cart_items: cart.map((item) => ({
-            product: item.id,
-            quantity: item.amount,
-            price: item.price,
-          })),
-          shipping_id: shipping_address.phone,
-          shipping_address: {
+
             // shipping_id: shipping_address.phone,
+            // shipping_id: shipping_id,
+          shipping_address: {
+            shipping_id: shipping_address.phone,
             address: shipping_address.address,
             city: shipping_address.city,
             province: shipping_address.province,
             country: shipping_address.country,
             phone: shipping_address.phone,
           },
+          cart_items: cart.map((item) => ({
+            product: item.id,
+            quantity: item.amount,
+            price: item.price,
+          })),
           payment_method: payment_method.paymentMethod,
           shipping_price: shipping_fee,
-          total_price: total_price,
-          discount: discountPercent,
+          total_amount: shipping_fee + total_price - ((discountPercent * total_price/100)),
+          discount_amount: discountPercent * total_price/100 ,//discountPercent,
           coupon_code: couponCode,
         };
         // const orderData = {
