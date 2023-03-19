@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
 import CheckOutSteps from '../../components/CheckOutSteps/CheckOutSteps';
 import { useCartContext } from '../../context/cartContext'
@@ -11,19 +11,46 @@ const Shipping = ({history}) => {
   const {total_item, cart, clearCart, shipping_fee, total_price, } = useCartContext();
  
 const navigate = useNavigate()
-
+const dispatch = useDispatch()
     const [address, setAddress] = useState(saveShippingAddress.address)
     const [city, setCity] = useState(saveShippingAddress.city)
     const [province, setProvince] = useState(saveShippingAddress.province)
     const [phone, setPhone] = useState(saveShippingAddress.phone)
 
-    
+    const userLogin = useSelector((state) => state.userLogin);
+    const { userInfo } = userLogin;
+
    const submitHandler =(e) => {
     e.preventDefault()
     console.log('submit')
     saveShippingAddress({address, city, province, phone});
     navigate('/payment');
-   }
+
+    // Send data to API endpoint
+    fetch('http://127.0.0.1:8000/api/order/shipping-details/create/', {
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${userInfo.token}`,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            address: address,
+            city: city,
+            province: province,
+            phone: phone,
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+        // Dispatch action to update state
+        dispatch({type: 'UPDATE_SHIPPING_DETAILS', payload: data})
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+  
 
   return (
     <>

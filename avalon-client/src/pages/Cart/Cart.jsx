@@ -76,6 +76,7 @@ const Cart = () => {
 
       // Store the discount percent in local storage
     localStorage.setItem('discountPercent', response.data.discount_percent);
+    localStorage.setItem('couponCode', response.data.code);
 
       // Assuming the API responds with the discounted total price
        // Assuming the API responds with the discounted total price and discount percentage

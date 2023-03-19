@@ -1,20 +1,37 @@
 import React, { useState } from 'react'
 import "./reviewForm.css"
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const ReviewForm = ({ productId, onSubmit }) => {
 
     const [review, setReview] = useState("");
     const [error, setError] = useState(null);
 
+    const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+  const username = localStorage.getItem('username');
+ 
+
+  
+
+  
     const handleSubmit = async (event) => {
         event.preventDefault();
        
         try {
-            const response = await axios.post('/api/product/review/create', {
-              product_id: productId,
+            const response = await axios.post('http://127.0.0.1:8000/api/product/review/create/',
+             {
+              user: username,
+            product: productId,
               review,
-            });
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${userInfo.token}`,
+              },
+            }
+            );
       
             onSubmit(response.data);
           } catch (error) {
@@ -37,22 +54,47 @@ const ReviewForm = ({ productId, onSubmit }) => {
 
                     <div className="userinput">
                         <label>First Name</label><br/>
+                        {userInfo && userInfo.first_name ? 
                         <input 
                         type="text" 
                         name="listing_faq-question" 
                         
                         id="review-username" 
-                        placeholder="Name" 
-                        required/>
-<br/>
+                        placeholder={userInfo.first_name} 
+                        // required
+                        />
+                        :
+                        <input 
+                        type="text" 
+                        name="listing_faq-question" 
+                        
+                        id="review-username" 
+                        placeholder="First Name"
+                        // required
+                        />
+                        }
+
+                        <br/>
                         <label>Last Name</label><br/>
+                        {userInfo && userInfo.first_name ? 
                         <input 
                         type="text" 
                         name="listing_faq-question" 
                         
                         id="review-username" 
-                        placeholder="Name" 
-                        required/>
+                        placeholder={userInfo.last_name} 
+                        // required
+                        />
+                        :
+                        <input 
+                        type="text" 
+                        name="listing_faq-question" 
+                        
+                        id="review-username" 
+                        placeholder="Last Name"
+                        // required
+                        />
+                        }
 
                         <div className="input-group">
                             <label htmlFor="review">Your Review</label><br/>

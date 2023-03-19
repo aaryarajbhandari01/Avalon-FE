@@ -1,11 +1,12 @@
 
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import CheckOutSteps from '../../components/CheckOutSteps/CheckOutSteps';
 import { useCartContext } from '../../context/cartContext'
 import './PlaceOrder.css'
 import CartItem from '../../components/CartItem/CartItem';
+import axios from 'axios'
 
 function PlaceOrder () {
 
@@ -14,16 +15,104 @@ function PlaceOrder () {
 // Retrieve the discount percent value from local storage
 // const storedDiscountPercent = localStorage.getItem('discountPercent');
 const discountPercent = localStorage.getItem('discountPercent');
+const couponCode =localStorage.getItem('couponCode');
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+console.log('token is', userInfo.token)
 
     useEffect(() => {
         window.scrollTo(0,0)
       }, [])
   
-      const placeOrder = () =>{
-        console.log('Place Order')
-      }
+    // const placeOrder = () =>{
+    //     console.log('Place Order')
+    //   }
+
+    // const placeOrder = async () => {
+    //     // Retrieve the order data from the state and create a request body
+    //     const orderData = {
+    //       orderItems: cart,
+    //       shippingAddress: shipping_address,
+    //       paymentMethod: payment_method.paymentMethod,
+    //       totalPrice: total_price,
+    //       shippingFee: shipping_fee
+    //     };
       
+    //     try {
+    //       // Make a POST request to the backend endpoint
+    //       const response = await axios.post('http://127.0.0.1:8000/api/order/checkout/', JSON.stringify(orderData),{
+    //         // method: 'POST',
+    //         headers: { 
+    //             'Authorization': `Bearer ${userInfo.token}`,
+    //     'Content-Type': 'application/json'}
+    //         // body: JSON.stringify(orderData)
+    //       });
+          
+    //       if (response.ok) {
+    //         // If the request is successful, clear the cart and navigate to the order confirmation page
+    //         clearCart();
+    //         // navigate('/order-confirmation');
+    //         console.log('order-confirmed')
+    //       } else {
+    //         // If the request fails, log the error message
+    //         console.error('Failed to place order:', response.statusText);
+    //       }
+    //     } catch (error) {
+    //       // If an error occurs, log the error message
+    //       console.error('An error occurred while placing the order:', error);
+    //     }
+    //   };
+    const placeOrder = async () => {
+        // Create the order object
+        const orderData = {
+            
+          cart_items: cart.map((item) => ({
+            product: item.id,
+            quantity: item.amount,
+            price: item.price,
+          })),
+          shipping_id: shipping_address.phone,
+          shipping_address: {
+            // shipping_id: shipping_address.phone,
+            address: shipping_address.address,
+            city: shipping_address.city,
+            province: shipping_address.province,
+            country: shipping_address.country,
+            phone: shipping_address.phone,
+          },
+          payment_method: payment_method.paymentMethod,
+          shipping_price: shipping_fee,
+          total_price: total_price,
+          discount: discountPercent,
+          coupon_code: couponCode,
+        };
+        // const orderData = {
+        //     shipping_id: shipping_address.phone+shipping_address.address,
+        //     coupon_code: couponCode,
+        //     cart_items: cart.map((item) => item.id),
+        //   };
+      
+        console.log(orderData);
+
+        try {
+          // Send the order to the endpoint
+          const response = await axios.post('http://127.0.0.1:8000/api/order/checkout/', orderData, {
+            headers: {
+              Authorization: `Bearer ${userInfo.token}`,
+              'Content-Type': 'application/json',
+            },
+          });
+          
+          // Clear the cart and navigate to the order details page
+          clearCart();
+        //   navigate(`/order/${response.data.id}`);
+        console.log(response);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
   return (
     <div>
         <CheckOutSteps step1 step2 step3 step4 />
