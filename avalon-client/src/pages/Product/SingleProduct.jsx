@@ -137,7 +137,7 @@ const SingleProduct = () => {
 
           <div className='bottom'>
              <h3> Review</h3>
-             <ReviewForm/>
+             <ReviewForm productId={id} />
              {/* <ReviewForm productId={id} onSubmit={handleReviewSubmit} /> */}
              <hr/>
             

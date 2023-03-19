@@ -4,41 +4,37 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 
 const ReviewForm = ({ productId, onSubmit }) => {
+  
+  const [review, setReview] = useState("");
+  const [error, setError] = useState(null);
 
-    const [review, setReview] = useState("");
-    const [error, setError] = useState(null);
-
-    const userLogin = useSelector((state) => state.userLogin);
+  const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   const username = localStorage.getItem('username');
- 
 
-  
+  const handleSubmit = async (event) => {
+      event.preventDefault();
 
-  
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-       
-        try {
-            const response = await axios.post('http://127.0.0.1:8000/api/product/review/create/',
-             {
+      try {
+          const response = await axios.post('http://127.0.0.1:8000/api/product/review/create/',
+          {
               user: username,
-            product: productId,
+              product: productId,
               review,
-            },
-            {
+          },
+          {
               headers: {
-                Authorization: `Bearer ${userInfo.token}`,
+                  Authorization: `Bearer ${userInfo.token}`,
               },
-            }
-            );
-      
-            onSubmit(response.data);
-          } catch (error) {
-            setError(error.response.data);
           }
+          );
 
-      };
+          onSubmit(response.data, username);
+      } catch (error) {
+          setError(error.response.data);
+      }
+
+  };
 
   return (
     <section className="reviewform-container">
@@ -83,6 +79,8 @@ const ReviewForm = ({ productId, onSubmit }) => {
                         
                         id="review-username" 
                         placeholder={userInfo.last_name} 
+                       
+
                         // required
                         />
                         :
