@@ -1,15 +1,16 @@
 .register-container{
-    height: 100vh;
+    height: 110vh;
     background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 50px;
 }
-.form-error{
+.error-message{
+    font-weight: 300;
+    font-size: smaller;
     color: red;
-   
-}
+  }
 .register-wrapper{
     width: 25%;
     padding: 20px;

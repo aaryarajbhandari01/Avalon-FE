@@ -34,7 +34,11 @@
   }
 
   
-  
+  .error-message{
+    font-weight: 300;
+    font-size: smaller;
+    color: red;
+  }
   
   
   .reviewform-container{
@@ -95,10 +99,10 @@ color: gray;
   
 .reviewform-input .add-btn{
   width: 100px;
-  padding: 5px;
+  padding: 8px;
   margin: 10px;
   margin-left: 0;
-  background-color: rgb(180, 220, 189);
+  background-color: rgb(162, 194, 170);
   border-radius: 2px;
   border: none;
 

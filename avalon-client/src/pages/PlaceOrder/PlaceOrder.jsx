@@ -17,6 +17,7 @@ function PlaceOrder () {
 const discountPercent = localStorage.getItem('discountPercent');
 const couponCode =localStorage.getItem('couponCode');
 
+const navigate = useNavigate()
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 console.log('token is', userInfo.token)
@@ -107,7 +108,8 @@ console.log('token is', userInfo.token)
           
           // Clear the cart and navigate to the order details page
           clearCart();
-        //   navigate(`/order/${response.data.id}`);
+          navigate('/orderConfirmed');
+
         console.log(response);
         } catch (error) {
           console.error(error);

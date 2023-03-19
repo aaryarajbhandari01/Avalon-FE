@@ -18,6 +18,7 @@ const [firstName, setFirstName] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
 
+  const [orders, setOrders] = useState([])
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -50,6 +51,18 @@ const [firstName, setFirstName] = useState("");
             setEmail(user.email)
             setFirstName(user.first_name)
             setLastName(user.last_name)
+
+            const config = {
+              headers: {
+                Authorization: `Bearer ${userInfo.token}`
+              },
+            };
+              // retrieve orders data
+              axios.get('http://127.0.0.1:8000/api/order/orders/', config)
+              .then(res => {
+                setOrders(res.data)
+              })
+              .catch(err => console.log(err))
         }
     }
   }, [dispatch, history, userInfo, user]);
@@ -174,6 +187,27 @@ console.log('profile updating')    }
         <div className="right">
         <h3>My Orders</h3>
         <p>Some text..</p>
+        {orders.map(order => (
+  <div key={order.id}>
+    <h2>Order #{order.id}</h2>
+    <p>Shipping Address: {order.shipping_details.address}, {order.shipping_details.city}, {order.shipping_details.province}</p>
+    <ul>
+      {order.order_items.map(item => (
+        <li key={item.id}>
+          <h3>{item.product.name}</h3>
+          <p>Quantity: {item.quantity}</p>
+          <p>Price: {item.product.price}</p>
+        </li>
+      ))}
+    </ul>
+    <p>Total Amount: {order.total_amount}</p>
+    <p>Discount Amount: {order.discount_amount}</p>
+    <p>Final Amount: {order.final_amount}</p>
+    <p>Order Status: {order.order_status}</p>
+    <p>Delivery Status: {order.delivery_status}</p>
+  </div>
+))}
+
         </div>
     </div>
     </div>

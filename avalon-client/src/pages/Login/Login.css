@@ -9,6 +9,26 @@
 
 }
 
+.error-message{
+    font-weight: 300;
+    font-size: smaller;
+    color: red;
+  }
+  
+  /* .error-message {
+    animation: fade-out 3s forwards;
+    
+  }
+  
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  } */
+  
 .login-wrapper{
     width: 20%;
     /* height: 60%; */

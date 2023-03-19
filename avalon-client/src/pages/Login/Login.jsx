@@ -95,6 +95,8 @@ const navigate = useNavigate()
             value={password}
             onChange={(e) => setPassword(e.target.value)}
          />
+         {error && <p className="error-message">{error}</p>}
+
           <button type="submit" className="login-btn">LOGIN</button>
           {/* <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link> */}
 

@@ -24,6 +24,7 @@ import Profile from './pages/Profile/Profile';
 import Shipping from './pages/Shipping/Shipping';
 import Payment from './pages/Payment/Payment';
 import PlaceOrder from './pages/PlaceOrder/PlaceOrder';
+import Order from './pages/Order/Order';
 
 
 
@@ -88,6 +89,10 @@ const router = createBrowserRouter([
     path: "/placeorder", 
    element: <PlaceOrder/>,
  },
+ {
+  path: "/orderConfirmed", 
+ element: <Order/>,
+},
    {
     path: "/payment", 
    element: <Payment/>,

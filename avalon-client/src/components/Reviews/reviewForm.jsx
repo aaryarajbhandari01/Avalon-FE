@@ -31,7 +31,8 @@ const ReviewForm = ({ productId, onSubmit }) => {
 
           onSubmit(response.data, username);
       } catch (error) {
-          setError(error.response.data);
+          setError("Please log in to add review");
+          // setError(error.response.data);
       }
 
   };
@@ -43,26 +44,30 @@ const ReviewForm = ({ productId, onSubmit }) => {
             <div className="reviewform-top">
                 <h2 className="title"> Add Your Review </h2>
 
-                {error && <div className="alert alert-danger">{error.message}</div>}
-                
+                {/* {error && <div className="alert alert-danger">{error.message}</div>} */}
+                {error && (
+  <div className="error-message">{error}</div>
+)}
                 <form onSubmit={handleSubmit}>
                 <div className="reviewform-input">
 
                     <div className="userinput">
-                        <label>First Name</label><br/>
+                        <label>Username</label><br/>
                         {userInfo && userInfo.first_name ? 
                         <input 
                         type="text" 
                         name="listing_faq-question" 
-                        
+                        disabled
                         id="review-username" 
-                        placeholder={userInfo.first_name} 
+                        placeholder={userInfo.username} 
+                        // placeholder={userInfo.first_name} 
                         // required
                         />
                         :
                         <input 
                         type="text" 
                         name="listing_faq-question" 
+                        disabled
                         
                         id="review-username" 
                         placeholder="First Name"
@@ -71,14 +76,15 @@ const ReviewForm = ({ productId, onSubmit }) => {
                         }
 
                         <br/>
-                        <label>Last Name</label><br/>
+                        <label>Full Name</label><br/>
                         {userInfo && userInfo.first_name ? 
                         <input 
                         type="text" 
                         name="listing_faq-question" 
+                        disabled
                         
                         id="review-username" 
-                        placeholder={userInfo.last_name} 
+                        placeholder={userInfo.first_name  + " " + userInfo.last_name} 
                        
 
                         // required
@@ -87,6 +93,7 @@ const ReviewForm = ({ productId, onSubmit }) => {
                         <input 
                         type="text" 
                         name="listing_faq-question" 
+                        disabled
                         
                         id="review-username" 
                         placeholder="Last Name"

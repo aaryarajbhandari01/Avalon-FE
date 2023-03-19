@@ -62,7 +62,7 @@ const Register = ({location, history}) => {
       <div className="register-wrapper">
         <div className="title"><h3 className="title">CREATE AN ACCOUNT</h3></div>
 
-        {error && <p>{error}</p>}
+        
 
         <form 
           className="form-group" 
@@ -117,7 +117,9 @@ const Register = ({location, history}) => {
             onChange={(e) => setEmail(e.target.value)}
          />
             {message && <p className="form-error"> {message} </p>}
-    
+            {error && <p className="error-message">User already exists
+              {/* {error} */}
+            </p>}
             <p className="agreement"><i>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b></i>
