@@ -11,6 +11,7 @@ import { useCartContext } from "../../context/cartContext";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from '../../actions/userAction'
 import { useNavigate } from "react-router-dom";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 
 const Navbar = () => {
@@ -96,6 +97,13 @@ const Navbar = () => {
             {userInfo ? (
               <>
               {/* <div title={userInfo.first_name} id='username' > */}
+              
+              <Link className ="link" to="/wishlist">
+            <div className="cartIcon">
+              <FavoriteBorderIcon/>
+            </div>
+            </Link>
+
               <div title="Profile" id='username' >
                 <Link to='/profile' className="icons">
                 <PersonOutlineIcon/>

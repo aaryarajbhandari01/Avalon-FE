@@ -5,10 +5,13 @@
 
   .product .top {
     display: flex;
+justify-content: space-between;
     /* background-color: #2879fe; */
     margin-bottom: 20px;
     
   }
+
+ 
 
   .product .top button{
     border-color:rgba(26, 86, 56, 0.529);

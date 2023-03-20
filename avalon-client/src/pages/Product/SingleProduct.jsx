@@ -10,6 +10,7 @@ import ReviewForm from '../../components/Reviews/reviewForm';
 import axios from 'axios';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useSelector } from 'react-redux';
+import AddToWishlist from '../../components/AddToCart/AddToWishlist';
 
 const API = "http://127.0.0.1:8000/api/product"
 
@@ -25,9 +26,9 @@ const SingleProduct = () => {
   const [reviews, setReviews] = useState([]);
   const [wishlistStatus, setWishlistStatus] = useState(null);
 
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
-console.log('token is', userInfo.token)
+//   const userLogin = useSelector((state) => state.userLogin);
+//   const { userInfo } = userLogin;
+// console.log('token is', userInfo.token)
 
    //destructuring single product details data
     const  { 
@@ -52,57 +53,30 @@ console.log('token is', userInfo.token)
   }, [])
   
 
-  // const authToken = localStorage.getItem("authToken");
+ 
 
-  // const addReview = async (data, authToken) => {
-  //   try {
-  //     const response = await axios.post(
-  //       "http://127.0.0.1:8000/api/product/review/create/",
-  //       data,
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${authToken}`,
-  //         },
-  //       }
-  //     );
-  //     return response.data;
-  //   } catch (error) {
-  //     console.error(error);
-  //     throw error;
-  //   }
-  // };
-
-  // const handleReviewSubmit = async (data) => {
-  //   try {
-  //     const newReview = await addReview(data, authToken);
-  //     setReviews([...reviews, newReview]);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  const addToWishlist = async (productId) => {
+  // const addToWishlist = async (productId) => {
    
 
-        try {
+  //       try {
 
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/product/wishlist/create/",
-        { product_id: productId },
-        // { product_id: [productId.toString()] },
+  //     const response = await axios.post(
+  //       "http://127.0.0.1:8000/api/product/wishlist/create/",
+  //       { product_id: productId },
+  //       // { product_id: [productId.toString()] },
         
-        {
-          headers: {
-            Authorization: `Bearer ${userInfo.token}`,
-          },
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${userInfo.token}`,
+  //         },
           
-        }
-      );
-      setWishlistStatus(response.status);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  //       }
+  //     );
+  //     setWishlistStatus(response.status);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   if(isSingleLoading){
         return  <div className='page_loading'>
@@ -117,11 +91,16 @@ console.log('token is', userInfo.token)
         <Link className ="link" to="/products"> <ArrowBackIosNewIcon/></Link>
         {/* <FavoriteBorderIcon/> */}
         </button> 
-        <button onClick={() => addToWishlist(id)}>
+      
+        {/* <button onClick={() => addToWishlist(id)}>
         <Link className ="link" to="/wishlist"> 
         <FavoriteBorderIcon/>
         </Link>
-        </button>
+        </button> */}
+        <AddToWishlist
+                  productId={singleProduct} //passing product as singleProduct in add to cart
+                />
+
       </div>
 
       <div>
@@ -138,7 +117,7 @@ console.log('token is', userInfo.token)
             
             <div className="right">
 
-            {wishlistStatus === 201 && (
+            {/* {wishlistStatus === 201 && (
   <div className="wishlist-message success">
     Product added to wishlist.
   </div>
@@ -147,7 +126,7 @@ console.log('token is', userInfo.token)
   <div className="wishlist-message error">
     There was an error adding the product to the wishlist.
   </div>
-)}
+)} */}
 
               <div className='top'>
                 <h1>{name}</h1>

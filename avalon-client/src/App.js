@@ -25,6 +25,7 @@ import Shipping from './pages/Shipping/Shipping';
 import Payment from './pages/Payment/Payment';
 import PlaceOrder from './pages/PlaceOrder/PlaceOrder';
 import Order from './pages/Order/Order';
+import Wishlist from './pages/Wishlist/Wishlist';
 
 
 
@@ -85,6 +86,10 @@ const router = createBrowserRouter([
       path: "/shipping", 
      element: <Shipping/>,
    },
+   {
+    path: "/wishlist", 
+   element: <Wishlist/>,
+ },
    {
     path: "/placeorder", 
    element: <PlaceOrder/>,

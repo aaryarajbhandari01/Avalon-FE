@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import "./reviewForm.css"
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const ReviewForm = ({ productId, onSubmit }) => {
   
   const [review, setReview] = useState("");
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -14,6 +16,15 @@ const ReviewForm = ({ productId, onSubmit }) => {
 
   const handleSubmit = async (event) => {
       event.preventDefault();
+
+      
+      if (!userInfo) {
+        // setCouponError('Please log in to apply coupon');
+  navigate('/login?redirect=wishlist');
+
+        return;
+      }
+
 
       try {
           const response = await axios.post('http://127.0.0.1:8000/api/product/review/create/',
@@ -31,7 +42,16 @@ const ReviewForm = ({ productId, onSubmit }) => {
 
           onSubmit(response.data, username);
       } catch (error) {
-          setError("Please log in to add review");
+        setError("You have already added a review. Please Reload the page");
+
+        // if 
+        // (error === 500){
+        //     setError("Please reload the page");
+
+        // } 
+
+        //   setError("Please log in to add review");
+
           // setError(error.response.data);
       }
 
