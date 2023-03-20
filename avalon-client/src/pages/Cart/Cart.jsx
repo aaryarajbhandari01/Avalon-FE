@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import "./Cart.css"
 import CartItem from '../../components/CartItem/CartItem'
@@ -25,7 +25,9 @@ const Cart = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
- 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   //navigating checking is user is logged in and then navigating the user to shipping
  const checkoutHandler = () => {

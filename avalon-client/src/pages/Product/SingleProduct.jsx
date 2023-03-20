@@ -8,6 +8,8 @@ import Images from '../../components/Images/Images';
 import Review from '../../components/Reviews/review';
 import ReviewForm from '../../components/Reviews/reviewForm';
 import axios from 'axios';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { useSelector } from 'react-redux';
 
 const API = "http://127.0.0.1:8000/api/product"
 
@@ -21,7 +23,11 @@ const SingleProduct = () => {
   console.log("File: SingleProduct.js single product id :" ,id);
   
   const [reviews, setReviews] = useState([]);
+  const [wishlistStatus, setWishlistStatus] = useState(null);
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+console.log('token is', userInfo.token)
 
    //destructuring single product details data
     const  { 
@@ -44,7 +50,7 @@ const SingleProduct = () => {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
-
+  
 
   // const authToken = localStorage.getItem("authToken");
 
@@ -75,6 +81,29 @@ const SingleProduct = () => {
   //   }
   // };
 
+  const addToWishlist = async (productId) => {
+   
+
+        try {
+
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/product/wishlist/create/",
+        { product_id: productId },
+        // { product_id: [productId.toString()] },
+        
+        {
+          headers: {
+            Authorization: `Bearer ${userInfo.token}`,
+          },
+          
+        }
+      );
+      setWishlistStatus(response.status);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   if(isSingleLoading){
         return  <div className='page_loading'>
           Loading.....
@@ -86,7 +115,13 @@ const SingleProduct = () => {
       <div className='top'>
         <button>
         <Link className ="link" to="/products"> <ArrowBackIosNewIcon/></Link>
+        {/* <FavoriteBorderIcon/> */}
         </button> 
+        <button onClick={() => addToWishlist(id)}>
+        <Link className ="link" to="/wishlist"> 
+        <FavoriteBorderIcon/>
+        </Link>
+        </button>
       </div>
 
       <div>
@@ -102,6 +137,18 @@ const SingleProduct = () => {
             </div>
             
             <div className="right">
+
+            {wishlistStatus === 201 && (
+  <div className="wishlist-message success">
+    Product added to wishlist.
+  </div>
+)}
+{wishlistStatus === 400 && (
+  <div className="wishlist-message error">
+    There was an error adding the product to the wishlist.
+  </div>
+)}
+
               <div className='top'>
                 <h1>{name}</h1>
                 {quantity > 0 ? <span className='inStock'>In Stock</span> : <span className='outOfStock'>Out of Stock</span>}

@@ -10,7 +10,7 @@ import "./Navbar.css"
 import { useCartContext } from "../../context/cartContext";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from '../../actions/userAction'
-
+import { useNavigate } from "react-router-dom";
 
 
 const Navbar = () => {
@@ -18,7 +18,8 @@ const Navbar = () => {
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo } = userLogin
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   //geting total item in  cart
   const {total_item} = useCartContext();
@@ -38,6 +39,7 @@ const Navbar = () => {
   const logoutHandler = () =>{
     dispatch(logout())
     console.log('logout')
+        navigate('/login');
   }
 
   return (

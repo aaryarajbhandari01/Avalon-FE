@@ -143,16 +143,21 @@ display: flex;
 justify-content: center; */
  }
 
+ .eg .moreDetail{
+  padding-top: 0px;
+ }
  .eg .sumDetails h3{
   justify-content: flex-start;
   padding-bottom: 3px;
  }
 
  .eg .sumDetails ul{
+  padding-top: 0px;
   padding: 10px;
  }
 
  .eg .sumDetails ul li{
+  padding-top: 0px;
 
   padding: 10px;
  }

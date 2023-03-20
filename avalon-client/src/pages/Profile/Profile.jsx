@@ -240,10 +240,10 @@ console.log('profile updating')    }
                                 </ul>
                               </small> */}
                             </h3>
-                            <span>Delivery Status:{order.delivery_status} </span> 
+                            <span>Delivery Status: &nbsp; {order.delivery_status} </span> 
                           </div>
                         </summary>
-                        <div>
+                        <div className="moreDetail">
                               <small className="sumDetails">
                                 <ul>
                                   {order.order_items.map(item => (
