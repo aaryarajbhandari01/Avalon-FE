@@ -4,7 +4,7 @@
   }
 
   .profile-title {
-
+display: flex;
     padding: 15px;
     margin: 10px;
     padding-bottom: 0px;
@@ -18,10 +18,25 @@
     /* padding: 10px; */
   }
 
+  .eg h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+ .eg h3 .icon{
+ 
+    font-size: 35px;
+    color: rgb(82, 118, 106);
+    padding: 10px;
+    padding-bottom: 20px;
+  }
+
   .profile-title h2{
+    flex:0.35;
     padding: 10px;
     margin-left: 10px;
-    font-weight: 300;
+    font-weight: 400;
     color: rgb(89, 137, 128);
     text-transform: capitalize;
   }
@@ -52,7 +67,8 @@
     margin-left: 10px;
   } */
 .profilecontainer  .right {
-    background-color: azure;
+    /* background-color: azure; */
+    height: auto;
     flex: 3;
   }
 .profilecontainer  .right .catImg {
@@ -82,3 +98,130 @@ text-transform: uppercase;
     font-weight: 300;
 
   }
+
+  
+
+  
+  .eg  h1 {
+    font-weight: 700;
+    line-height: 1.125;
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+ }
+ .eg h2 {
+    margin-top: 0.25em;
+    color: #999;
+    font-weight: 300;
+    font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+ }
+ .eg h2 + * {
+    margin-top: 1.5em;
+ }
+ .eg summary {
+    background-color: #fff;
+    position: relative;
+    cursor: pointer;
+    padding: 1em 0.5em;
+    list-style: none;
+ }
+ .eg  summary::-webkit- .eg details-marker {
+    display: none;
+ }
+  summary:hover {
+    background-color: #f2f5f9;
+ }
+   .eg summary div {
+    display: flex;
+    align-items: center;
+ }
+   .eg summary h3 {
+    display: flex;
+    flex-direction: column;
+ }
+ .eg .sumDetails{
+display: flex;
+/* align-items: center;
+justify-content: center; */
+ }
+
+ .eg .sumDetails h3{
+  justify-content: flex-start;
+  padding-bottom: 3px;
+ }
+
+ .eg .sumDetails ul{
+  padding: 10px;
+ }
+
+ .eg .sumDetails ul li{
+
+  padding: 10px;
+ }
+ .eg .sumDetails ul li p{
+  padding: 1px;
+font-weight: 300;
+ }
+   .eg summary small {
+    color: #999;
+    font-size: 0.875em;
+ }
+   .eg summary strong {
+    font-weight: 500;
+ }
+   .eg summary span:first-child {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 10px;
+    background-color: rgb(221, 234, 220);
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.25em;
+ }
+   .eg summary span:first-child svg {
+    width: 2.25rem;
+    height: 2.25rem;
+ }
+   .eg summary span:last-child {
+    font-weight: 700;
+    margin-left: auto;
+ }
+   .eg summary:focus {
+    outline: none;
+ }
+   .eg summary .plus {
+    color: #289672;
+ }
+   .eg details {
+    border-bottom: 1px solid #b5bfd9;
+ }
+   .eg details[open] {
+    box-shadow: -3px 0 0 #b5bfd9;
+ }
+
+ 
+
+   .eg details:first-of-type {
+    border-top: 1px solid #b5bfd9;
+ }
+   .eg details > div {
+    padding: 2em 2em 0;
+    font-size: 0.875em;
+ }
+ .eg  dl {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2px;
+ }
+ .eg   dl dt {
+    font-weight: 700;
+ }
+ .eg   dl div {
+    margin-right: 4em;
+    margin-bottom: 2em;
+ }
+  
+ .eg dt{
+  color: #7c7b7b;
+  padding-bottom: 2px;
+ }

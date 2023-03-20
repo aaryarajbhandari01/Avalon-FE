@@ -60,7 +60,7 @@ function CheckOutSteps({step1, step2, step3, step4}) {
         <Nav.Item className='steps'>
             {step4 ? (
                  <LinkContainer to="/placeorder" className='link active-category'>
-                 <Nav.Link>Place Order</Nav.Link>
+                 <Nav.Link><LocalShippingIcon/></Nav.Link>
              </LinkContainer>
             ):(
                 <Nav.Link disabled> <LocalShippingIcon/></Nav.Link>

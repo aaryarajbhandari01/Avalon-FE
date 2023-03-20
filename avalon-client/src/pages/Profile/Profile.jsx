@@ -5,8 +5,8 @@ import axios from "axios";
 import { getUserDetails } from '../../actions/userAction'
 import { useDispatch, useSelector } from "react-redux";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-
-
+import InventoryIcon from '@mui/icons-material/Inventory';
+import LocalMallIcon from '@mui/icons-material/LocalMall';
 
 const Profile = ({history}) => {
 
@@ -91,6 +91,8 @@ console.log('profile updating')    }
     <>
     <div className="profile-title">
       <h2> My Profile</h2>
+      <h2>My Orders</h2>
+
     </div>
     <div className="profilecontainer">
       
@@ -185,30 +187,102 @@ console.log('profile updating')    }
         </div>
 
         <div className="right">
-        <h3>My Orders</h3>
-        <p>Some text..</p>
-        {orders.map(order => (
-  <div key={order.id}>
-    <h2>Order #{order.id}</h2>
-    <p>Shipping Address: {order.shipping_details.address}, {order.shipping_details.city}, {order.shipping_details.province}</p>
-    <ul>
-      {order.order_items.map(item => (
-        <li key={item.id}>
-          <h3>{item.product.name}</h3>
-          <p>Quantity: {item.quantity}</p>
-          <p>Price: {item.product.price}</p>
-        </li>
-      ))}
-    </ul>
-    <p>Total Amount: {order.total_amount}</p>
-    <p>Discount Amount: {order.discount_amount}</p>
-    <p>Final Amount: {order.final_amount}</p>
-    <p>Order Status: {order.order_status}</p>
-    <p>Delivery Status: {order.delivery_status}</p>
-  </div>
-))}
+          {/* <h3>My Orders</h3>
+          <p>Some text..</p>
+            {orders.map(order => (
+              <div key={order.id}>
+                
+                <h2>Order #{order.id}</h2>
+                <p>Shipping Address: 
+                  {order.shipping_details.address},
+                  {order.shipping_details.city}, 
+                  {order.shipping_details.province}
+                </p>
+                <ul>
+                  {order.order_items.map(item => (
+                    <li key={item.id}>
+                      <h3>{item.product.name}</h3>
+                      <p>Quantity: {item.quantity}</p>
+                      <p>Price: {item.product.price}</p>
+                    </li>
+                  ))}
+                </ul>
+                <p>Total Amount: {order.total_amount}</p>
+                <p>Discount Amount: {order.discount_amount}</p>
+                <p>Final Amount: {order.final_amount}</p>
+                <p>Order Status: {order.order_status}</p>
+                <p>Delivery Status: {order.delivery_status}</p>
+            </div>
+          ))} */}
+
+                <div className="eg">
+                  <h3> <span> <InventoryIcon className="icon"/> </span> </h3>
+                  
+                  {orders.map(order => (
+                  <details key={order.id}>
+                  
+                      {/* <div > */}
+                        <summary>
+                          <div>
+                            <span><LocalMallIcon/></span>
+                           
+                            <h3>
+                              <strong>Order #{order.id}</strong>
+                              {/* <small>
+                                <ul>
+                                  {order.order_items.map(item => (
+                                    <li key={item.id}>
+                                      <h3>{item.product.name}</h3>
+                                      <p>Quantity: {item.quantity}</p>
+                                      <p>Price: {item.product.price}</p>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </small> */}
+                            </h3>
+                            <span>Delivery Status:{order.delivery_status} </span> 
+                          </div>
+                        </summary>
+                        <div>
+                              <small className="sumDetails">
+                                <ul>
+                                  {order.order_items.map(item => (
+                                    <li key={item.id}>
+                                      <h3>{item.product.name}</h3>
+                                      <p>Quantity: {item.quantity}</p>
+                                      <p>Price: {item.product.price}</p>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </small>
+                          <dl>
+                            <div>
+                              <dt>Total Amount</dt>
+                              <dd>{order.total_amount}</dd>
+                            </div>
+                            <div>
+                              <dt>Order Status</dt>
+                              <dd>{order.order_status}</dd>
+                            </div>
+                            <div>
+                              <dt>Shipping Address: </dt>
+                              <dd>
+                                {order.shipping_details.address},
+                                {order.shipping_details.city}, 
+                                {order.shipping_details.province}
+                              </dd>
+                            </div>
+                          </dl>
+                        </div>
+                      {/* </div>  */}
+                  
+                  </details>
+                    ))}
+                </div>
+
 
         </div>
+
     </div>
     </div>
     </>
