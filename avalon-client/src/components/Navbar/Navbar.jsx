@@ -47,8 +47,10 @@ const Navbar = () => {
     <div className = 'navbar'>
       <div className="wrapper">
         <div className="left">
-          <div className="item">
+          <div className="logoitem">
+          <Link className ="link" to="/">
             <img src="/images/dark.png" alt="logo" className="logo"/>
+         </Link>
           </div>
             <div className="item">
               <Link className ="link" to="/">Home</Link>
@@ -80,43 +82,64 @@ const Navbar = () => {
             <div className="icons">
               {/* <div className="search"> */}
                 {/* <input type="text" placeholder="Seach Items"/> */}
+                <div className="item">
                  <Link className ="link" to="/products" onClick={handleSearchClick}>
                     <SearchIcon/>
                   </Link>
+                  </div>
                {/* </div> */}
 
             {/* <PersonOutlineIcon/> */}
             
+            <div className="item">
             <Link className ="link" to="/myCart">
             <div className="cartIcon">
               <ShoppingCartOutlinedIcon/>
               <span>{total_item}</span>
             </div>
             </Link>
+</div>
 
             {userInfo ? (
               <>
               {/* <div title={userInfo.first_name} id='username' > */}
               
+              <div className="item">
               <Link className ="link" to="/wishlist">
             <div className="cartIcon">
               <FavoriteBorderIcon/>
             </div>
             </Link>
+                </div>
+
 
               <div title="Profile" id='username' >
+                <div className="item">
                 <Link to='/profile' className="icons">
-                <PersonOutlineIcon/>
+                <PersonOutlineIcon/> 
+                {/* <span title={userInfo.first_name} className="username">Hi! {userInfo.first_name} </span> */}
+                </Link>
+                
+                <Link to='/profile' className="icons">
+                {/* <PersonOutlineIcon/> */}
                 <span title={userInfo.first_name} className="username">Hi! {userInfo.first_name} </span>
                 </Link>
 
+                </div>
+                
+               
+
               </div>
+
+              <div className="item">
                 <div  title="Logout" onClick={logoutHandler}><LogoutIcon/></div>
+              </div>
                 </>
 
             ) : (
-              <div className="item">
+             
 
+             <div className="item">
               <Link className ="link login" to="/login" >Login</Link>
               {/* <LoginIcon/> */}
 
