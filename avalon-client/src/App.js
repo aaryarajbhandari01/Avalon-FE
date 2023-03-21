@@ -3,7 +3,9 @@ import './App.css';
 import { 
       createBrowserRouter, 
       RouterProvider, 
-      Outlet} from "react-router-dom"; //rect router v6
+      Outlet,
+     
+      Route,} from "react-router-dom"; //rect router v6
 
 //component
 import Navbar from './components/Navbar/Navbar';
@@ -28,9 +30,10 @@ import Order from './pages/Order/Order';
 import Wishlist from './pages/Wishlist/Wishlist';
 
 
-
 // creating a layout to call the components
 const Layout =() => {
+
+  
   return(
     <div className='app'>
       <Navbar/>
@@ -50,6 +53,7 @@ const router = createBrowserRouter([
         path:"/",
         element:<Home/>
       },
+       
       {
         path:"/about",
         element:<About/>
@@ -124,9 +128,12 @@ const router = createBrowserRouter([
 
 function App() {
 
+
+
   return (
     <div>
       <RouterProvider router={router} />
+      
     </div>
   );
 }

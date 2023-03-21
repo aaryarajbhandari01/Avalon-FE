@@ -5,6 +5,8 @@ import "./Home.css"
 
 const Home = () => {
 
+ 
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])

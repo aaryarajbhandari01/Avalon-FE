@@ -39,7 +39,7 @@ import {
         // MAKING API CALL
         const {data} = await axios.post(
             'http://127.0.0.1:8000/api/account/login/',
-            { username: username, password: password },
+            { username: username, password: password},
             config
 
             )//destructuring response and post to get user tokens
@@ -49,12 +49,12 @@ import {
 
         dispatch({
             type: USER_LOGIN_SUCCESS,
-            payload: data
+            payload: data,
         })
 
         //setting in   state and local storage
         localStorage.setItem('userInfo', JSON.stringify(data) )
-        // localStorage.setItem('isLoggedIn', true); // Set isLoggedIn to true
+        localStorage.setItem('isLoggedIn', true); // Set isLoggedIn to true
 
         // if (localStorage.getItem('isLoggedIn') === 'true') { // Check if isLoggedIn is true
         //   window.location = '/products'; // Redirect to products page
@@ -75,7 +75,7 @@ import {
 
     //removing items from local storage
     localStorage.removeItem('userInfo')
-
+    localStorage.setItem('isLoggedIn', false);
     //dispatch logout reducter
     dispatch({type:USER_LOGOUT})
  }

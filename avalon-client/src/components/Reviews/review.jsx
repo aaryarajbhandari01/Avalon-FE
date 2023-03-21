@@ -3,7 +3,9 @@ import "./review.css"
 
 const Review = ({reviews}) => {
     
-  console.log(reviews);
+
+  console.log('------------review',reviews);
+
     
   return (
     <div >
