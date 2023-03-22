@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import { Link } from 'react-router-dom';
 import "./Wishlist.css";
+import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 function Wishlist() {
@@ -74,6 +75,7 @@ function Wishlist() {
     <>
       <div className='wishlist'>
         <h2>My Wishlist</h2>
+
         <div className='wishlistProduct'>
           {products.map((currElem) => (
             <>
@@ -81,7 +83,9 @@ function Wishlist() {
             <button onClick={() => onDelete(currElem.id)}>Delete</button> */}
             <div className='wishlistItems'>
             <p className='removeWish'>
-            <DeleteOutlineIcon  onClick={() => onDelete(currElem.id)}/>
+              <button>
+            <RemoveIcon  onClick={() => onDelete(currElem.id)}/>
+            </button>
             </p>
 
             <Link className='link' to={`/singleproduct/${currElem.id}`}>
@@ -110,8 +114,11 @@ function Wishlist() {
             </>
           ))}
         </div>
+        
       </div>
     </>
+
+   
   );
 }
 
