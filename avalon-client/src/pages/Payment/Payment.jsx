@@ -1,7 +1,10 @@
+import KhaltiCheckout from 'khalti-checkout-web';
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
 import CheckOutSteps from '../../components/CheckOutSteps/CheckOutSteps';
+import Khalti from '../../components/Khalti/Khalti';
+import config from '../../components/Khalti/khaltiConfig';
 import { useCartContext } from '../../context/cartContext'
 import './Payment.css'
 
@@ -18,6 +21,11 @@ const navigate = useNavigate()
     // if(!saveShippingAddress.address) {
     //     navigate('/shipping')
     // }
+
+    //integrating khalti
+
+    let checkout = new KhaltiCheckout(config);
+
 
     const submitHandler =(e) => {
         e.preventDefault()
@@ -40,19 +48,23 @@ const navigate = useNavigate()
             <h4>Select Method</h4>
             {/* <br/> */}
             <div className='inputGroup'>
+
+            {/* <Khalti> */}
             <input 
                 id="khalti"
                 type="radio"
                 label="Khalti"
                 // name="paymentMethod" 
                 name="paymentMethodKhalti" 
-
+                onClick={() =>  checkout.show({amount: 1000})}
                 checked={paymentMethod === 'Khalti'}
                 // value={address ? address : ""}
                 value="Khalti"
                 onChange={(e) => setPaymentMethod(e.target.value)}
             /> 
-            <label  htmlFor="khalti" >Khalti</label>
+            <label  htmlFor="khalti" >Pay Via Khalti</label>
+            {/* </Khalti> */}
+
             </div>
 
             <div className='inputGroup'>
