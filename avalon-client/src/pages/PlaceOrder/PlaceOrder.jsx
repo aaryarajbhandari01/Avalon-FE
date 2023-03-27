@@ -13,7 +13,6 @@ function PlaceOrder () {
     const {total_item, cart, clearCart, shipping_fee, total_price, shipping_address, payment_method} = useCartContext();
  
 // Retrieve the discount percent value from local storage
-// const storedDiscountPercent = localStorage.getItem('discountPercent');
 const discountPercent = localStorage.getItem('discountPercent');
 const couponCode =localStorage.getItem('couponCode');
 
@@ -26,44 +25,7 @@ console.log('token is', userInfo.token)
         window.scrollTo(0,0)
       }, [])
   
-    // const placeOrder = () =>{
-    //     console.log('Place Order')
-    //   }
-
-    // const placeOrder = async () => {
-    //     // Retrieve the order data from the state and create a request body
-    //     const orderData = {
-    //       orderItems: cart,
-    //       shippingAddress: shipping_address,
-    //       paymentMethod: payment_method.paymentMethod,
-    //       totalPrice: total_price,
-    //       shippingFee: shipping_fee
-    //     };
-      
-    //     try {
-    //       // Make a POST request to the backend endpoint
-    //       const response = await axios.post('http://127.0.0.1:8000/api/order/checkout/', JSON.stringify(orderData),{
-    //         // method: 'POST',
-    //         headers: { 
-    //             'Authorization': `Bearer ${userInfo.token}`,
-    //     'Content-Type': 'application/json'}
-    //         // body: JSON.stringify(orderData)
-    //       });
-          
-    //       if (response.ok) {
-    //         // If the request is successful, clear the cart and navigate to the order confirmation page
-    //         clearCart();
-    //         // navigate('/order-confirmation');
-    //         console.log('order-confirmed')
-    //       } else {
-    //         // If the request fails, log the error message
-    //         console.error('Failed to place order:', response.statusText);
-    //       }
-    //     } catch (error) {
-    //       // If an error occurs, log the error message
-    //       console.error('An error occurred while placing the order:', error);
-    //     }
-    //   };
+    
     const placeOrder = async () => {
         // Create the order object
         const orderData = {

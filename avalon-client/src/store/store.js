@@ -1,7 +1,7 @@
 // import { combineReducers} from 'redux';
 // import {productListReducers,productDetailsReducers} from '../reducers/productReducers';
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import thunkMiddleware from 'redux-thunk';
+import thunk from 'redux-thunk';
 // // import { cartReducer } from './reducers/cartReducers';
 // // import { userLoginReducers } from './reducers/userReducers';
 // // import { userRegisterReducers } from './reducers/userReducers';
@@ -40,7 +40,8 @@ const initailState = {
 
 const store = configureStore({
     reducer,
-    initailState
+    preloadedState:initailState,
+    middleware:[thunk]
 })
 
 
