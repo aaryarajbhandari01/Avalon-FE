@@ -42,17 +42,9 @@ const ReviewForm = ({ productId, onSubmit }) => {
 
           onSubmit(response.data, username);
       } catch (error) {
-        setError("You have already added a review. Please Reload the page");
+        setError("Please login");
 
-        // if 
-        // (error === 500){
-        //     setError("Please reload the page");
-
-        // } 
-
-        //   setError("Please log in to add review");
-
-          // setError(error.response.data);
+       
       }
 
   };

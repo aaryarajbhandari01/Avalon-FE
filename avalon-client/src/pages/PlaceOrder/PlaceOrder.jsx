@@ -46,6 +46,7 @@ console.log('token is', userInfo.token)
             price: item.price,
           })),
           payment_method: payment_method.paymentMethod,
+          payment_id : payment_method.payment_id,
           shipping_price: shipping_fee,
           total_amount: shipping_fee + total_price - ((discountPercent * total_price/100)),
           discount_amount: discountPercent * total_price/100 ,//discountPercent,
@@ -58,6 +59,7 @@ console.log('token is', userInfo.token)
         //   };
       
         console.log(orderData);
+        console.log(payment_method)
 
         try {
           // Send the order to the endpoint

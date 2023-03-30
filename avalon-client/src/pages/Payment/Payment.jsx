@@ -1,6 +1,6 @@
 import axios from 'axios';
 import KhaltiCheckout from 'khalti-checkout-web';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
 import CheckOutSteps from '../../components/CheckOutSteps/CheckOutSteps';
@@ -10,20 +10,50 @@ import { useCartContext } from '../../context/cartContext'
 import './Payment.css'
 
 function Payment( {history}) {
+  
 
     const {savePaymentMethod } = useCartContext();
     const {saveShippingAddress } = useCartContext();
 
-    const [paymentMethod, setPaymentMethod] = useState(null);
+    const [paymentMethod, setPaymentMethod] = useState(null)
+   
 
 const navigate = useNavigate()
 
 
     //integrating khalti
 
-    let checkout = new KhaltiCheckout(config);
+    // let checkout = new KhaltiCheckout(config);
 
-
+    const initiatePayment = () => {
+        let checkout = new KhaltiCheckout({
+          ...config,
+          onSuccess: (payload) => {
+            axios.post('http://127.0.0.1:8000/api/order/payment/', {
+              payment_id: payload.token,
+              amount: 1000,
+            })
+              .then(response => {
+                if (response.data.url) {
+                  window.location.href = response.data.url;
+                } else {
+                  console.log(response.data);
+                }
+              })
+              .catch(error => {
+                console.log(error.response.data);
+              });
+          },
+          onError: (error) => {
+            console.log(error);
+          },
+          onClose: () => {
+            console.log('Khalti checkout closed');
+          },
+        });
+        checkout.show({ amount: 1000 });
+      }
+    
     
 
     const submitHandler =(e) => {
@@ -79,20 +109,21 @@ const navigate = useNavigate()
                 // name="paymentMethod" 
                 name="paymentMethodKhalti" 
                 // onClick={() =>  checkout.show({amount: 1000})}
-                  onClick={() => {
-                    checkout.show({amount: 1000});
-                    checkout.on("token", async (payload) => {
-                        console.log("Payment token:", payload.token);
-                        try {
-                            const response = await verifyPayment(payload);
-                            console.log(response);
-                            savePaymentMethod({ paymentMethod: "Khalti" });
-                            navigate("/placeorder");
-                        } catch (error) {
-                            console.error(error);
-                        }
-                    });
-                }}
+                //   onClick={() => {
+                //     checkout.show({amount: 1000});
+                //     checkout.on("token", async (payload) => {
+                //         console.log("Payment token:", payload.token);
+                //         try {
+                //             const response = await verifyPayment(payload);
+                //             console.log(response);
+                //             savePaymentMethod({ paymentMethod: "Khalti" });
+                //             navigate("/placeorder");
+                //         } catch (error) {
+                //             console.error(error);
+                //         }
+                //     });
+                // }}
+                onClick={initiatePayment}
                 checked={paymentMethod === 'KHALTI'}
                 // value={address ? address : ""}
                 value="KHALTI"

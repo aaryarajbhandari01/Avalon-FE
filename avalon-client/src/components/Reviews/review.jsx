@@ -8,7 +8,7 @@ const Review = ({reviews}) => {
 
     
   return (
-    <div >
+    <div>
         {reviews ? (
         reviews.map((review, index) => (
           <div class="comment-box" key={index}>

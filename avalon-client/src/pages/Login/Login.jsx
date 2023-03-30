@@ -25,7 +25,7 @@ const navigate = useNavigate()
   const userLogin = useSelector(state => state.userLogin) //userLogin inside store.js
 
   //destructuring userLogin
-  const {error, loading, userInfo} = userLogin
+  const {error, userInfo} = userLogin
 
   //redirecting user back on the page they were on if loged in
   useEffect(() => {

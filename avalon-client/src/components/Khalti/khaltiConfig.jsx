@@ -20,8 +20,8 @@ export const verifyPayment = async (payload) => {
   
     // Send the order to the endpoint
    
-    const response = await axios.post("http://127.0.0.1:8000/api/order/payment/", data, config);
-    // const response = await axios.post("http://your-django-backend.com/api/v1/payments/", data, config);
+    // const response = await axios.post("http://127.0.0.1:8000/api/order/payment/", data, config);
+    const response = await axios.post("http://your-django-backend.com/api/v1/payments/", data, config);
     console.log(response.data);
   };
   
