@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import Slider from '../../components/Carousel/Slider'
 import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts'
 import "./Home.css"
+import Chat from '../../components/Chat/Chat'
 
 const Home = () => {
 
@@ -18,6 +19,7 @@ const Home = () => {
       <FeaturedProducts type="trending"/> 
       {/* for featured product: recently added type*/}
       {/* <FeaturedProducts type="recently Added"/> */}
+      <Chat/>
     </div>
   )
 }

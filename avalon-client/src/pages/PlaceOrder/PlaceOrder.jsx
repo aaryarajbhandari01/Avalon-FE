@@ -69,8 +69,8 @@ console.log('token is', userInfo.token)
               'Content-Type': 'application/json',
             },
           });
-          
-          // Clear the cart and navigate to the order details page
+      
+          //Clear the cart and navigate to the order details page
           clearCart();
           navigate('/orderConfirmed');
 
